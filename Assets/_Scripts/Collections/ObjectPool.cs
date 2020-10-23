@@ -28,9 +28,9 @@ public class ObjectPool
     //ParentObj have to be an empty object in scene ,defined by StringCollection
     private Transform ParentObj;
 
-    public ObjectPool(GameObject ObjectToPool, int totalObjectsAtstart)
+    public ObjectPool(GameObject ObjectToPool, int totalObjectsAtstart, bool uiSnippet)
     {
-        ParentObj = GameObject.Find(StringCollection.OBJECTPOOLPARENT_SO).transform;
+        ParentObj = uiSnippet ?GameObject.Find(StringCollection.SNIPPETPARENT_SO).transform: GameObject.Find(StringCollection.OBJECTPOOLPARENT_SO).transform;
 
         objectList = new List<GameObject>(totalObjectsAtstart);
         go = ObjectToPool;
