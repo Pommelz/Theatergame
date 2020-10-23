@@ -43,11 +43,12 @@ public class SceneController : MonoBehaviour
 
     private void OnSceneLoaded(Scene _scene, LoadSceneMode _loadSceneMode)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void LoadScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName, LoadSceneMode.Single);
     }
+
 }
