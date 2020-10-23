@@ -9,10 +9,11 @@ public class TextSnippetController : MonoBehaviour
 {
     public List<ListWrapper> rhyme = new List<ListWrapper>();
     public List<string> wrongAnswers = new List<string>();
-    public Transform SnippetBttn;
 
-    private List<string> chosenTest = new List<string>();
+    public Transform SnippetBttn;
     ObjectPool bttnPool;
+
+    private List<string> chosenText = new List<string>();
     private ListWrapper activeRhyme;
     private int roundCount = 0;
     private List<Transform> currBttns = new List<Transform>();
@@ -32,13 +33,13 @@ public class TextSnippetController : MonoBehaviour
 
     private void SpawnSnippetBttns(int round)
     {
-        int r = Random.Range(0, 2);
-        Debug.Log(r.ToString());
+        int r = Random.Range(0, 3);
 
         for (int i = 0; i < 3; i++)
         {
             GameObject bttn = bttnPool.NextFree();
             TextSnippet ts = bttn.GetComponent<TextSnippet>();
+
             currBttns.Add(bttn.transform);
 
             if (i == r)
@@ -51,28 +52,29 @@ public class TextSnippetController : MonoBehaviour
                 ts.isRhyme = false;
                 int randomWrongAnswer = Random.Range(0, wrongAnswers.Count);
                 bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(wrongAnswers[randomWrongAnswer]);
+                ts.wrongAnsweriD = randomWrongAnswer;
 
             }
         }
-
         roundCount++;
-
     }
 
-    private void DefineBttnText(bool _correctAnswer)
+    public void RoundEvaluation(bool _correctAnswer, int wrongAnswerID)
     {
+        chosenText.Add(_correctAnswer ? activeRhyme.myList[roundCount - 1] : wrongAnswers[wrongAnswerID]);
 
-    }
-
-    public void Evaluation(bool _correctAnswer)
-    {
-        Debug.Log(_correctAnswer ? "correct answer!" : "wrong answer");
-        
-        foreach(Transform t in currBttns)
+        foreach (Transform t in currBttns)
         {
             t.gameObject.SetActive(false);
         }
 
-        SpawnSnippetBttns(roundCount);
+        //TODO: Call this function after the actor is done
+        if (roundCount < 3)
+            SpawnSnippetBttns(roundCount);
+        else
+            foreach (string s in chosenText)
+            {
+                Debug.Log(s);
+            }
     }
 }

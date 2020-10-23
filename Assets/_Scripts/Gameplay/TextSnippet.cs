@@ -8,6 +8,9 @@ public class TextSnippet : MonoBehaviour
     private TextSnippetController snippetController;
     [HideInInspector]
     public bool isRhyme;
+    [HideInInspector]
+    public int wrongAnsweriD;
+
 
     private void Start()
     {
@@ -16,6 +19,6 @@ public class TextSnippet : MonoBehaviour
 
     public void OnSnippetPressed()
     {
-        snippetController.Evaluation(isRhyme);
+        snippetController.RoundEvaluation(isRhyme, wrongAnsweriD);
     }
 }
