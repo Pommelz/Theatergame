@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     public Transform creditsPnl;
     public Transform tutorialPnl;
     public Transform bttnPnl;
+    public Transform settingsPnl;
 
     public enum MenuPnl
     {
@@ -28,6 +29,12 @@ public class MainMenuManager : MonoBehaviour
     public void ControlTutorialPnl(bool _enable)
     {
         tutorialPnl.gameObject.SetActive(_enable);
+        bttnPnl.gameObject.SetActive(!_enable);
+    }
+
+    public void ControlSettingsPnl(bool _enable)
+    {
+        settingsPnl.gameObject.SetActive(_enable);
         bttnPnl.gameObject.SetActive(!_enable);
     }
 
