@@ -13,10 +13,10 @@ public class TextSnippetController : MonoBehaviour
     public Transform SnippetBttn;
     ObjectPool bttnPool;
 
-    private List<string> chosenText = new List<string>();
     private ListWrapper activeRhyme;
-    private int roundCount = 0;
+    private List<string> chosenText = new List<string>();
     private List<Transform> currBttns = new List<Transform>();
+    private int roundCount = 0;
 
     void Start()
     {
