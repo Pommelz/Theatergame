@@ -3,7 +3,6 @@
  * Created by Maxi Karnstedt 2020
  *
  */
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -45,7 +44,10 @@ public class ObjectPool
         }
     }
 
-    //returns the next free obj in objpool list
+    /// <summary>
+    /// returns the next free obj in objpool list
+    /// </summary>
+    /// <returns></returns>
     public GameObject NextFree()
     {
         var freeObject = objectList.Where(x => x.activeSelf == false).FirstOrDefault();
