@@ -9,6 +9,5 @@ namespace Collections.ListWrapping
     {
         public string RomeoText;
         public EmotionAnswerWrapper  julietText;
-        //public List<JulietAnswerWrapper> julietText = new List<JulietAnswerWrapper>();
     }
 }
