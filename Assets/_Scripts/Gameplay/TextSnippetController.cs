@@ -18,6 +18,11 @@ public class TextSnippetController : MonoBehaviour
     private List<Transform> currBttns = new List<Transform>();
     private int roundCount = 0;
 
+
+    public delegate void PassingString_EventType(string _text);
+    public static event PassingString_EventType OnRomeoText;
+    public static event PassingString_EventType OnActorText;
+
     void Start()
     {
         bttnPool = new ObjectPool(SnippetBttn.gameObject, 3, true);
@@ -60,7 +65,6 @@ public class TextSnippetController : MonoBehaviour
         answers.Add(wrong1);
         answers.Add(wrong2);
 
-        Debug.Log(answers.Count);
         int randomJuliet = Random.Range(0, 3);
 
         //spawn three bttns
@@ -80,8 +84,6 @@ public class TextSnippetController : MonoBehaviour
             else
             {
                 ts.isRhyme = false;
-                //Debug.Log(answers[0].responseSmiley);
-                //Debug.Log(answers[0].responsePart);
                 bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(answers[0].responseSmiley));
 
                 ts.myWrapper = answers[0];
@@ -115,9 +117,6 @@ public class TextSnippetController : MonoBehaviour
             case Smiley.BANANA:
                 smileystring = ":P";
                 break;
-            default:
-                Debug.Log("nothing matches");
-                break;
         }
         return smileystring;
     }
@@ -130,7 +129,6 @@ public class TextSnippetController : MonoBehaviour
             if (saw.responseSmiley == _wantedEmotion)
             {
                 chosen = saw;
-                Debug.Log(saw.responseSmiley);
                 break;
             }
         }
@@ -142,7 +140,6 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         chosenText.Add(_smileyanswerwrapper);
-        Debug.Log(_correctAnswer ? "correct" + _smileyanswerwrapper.responsePart : "wrong");
         foreach (Transform t in currBttns)
         {
             t.gameObject.SetActive(false);
@@ -153,10 +150,19 @@ public class TextSnippetController : MonoBehaviour
         if (roundCount < rhyme.Count)
             RomeoText();
         else
+        {
+            Debug.Log("end");
             foreach (EmotionAnswerWrapper s in chosenText)
             {
-                Debug.Log(s.responsePart);
+                Debug.Log("results: " +s.responsePart);
             }
+
+        }
         //RomeoText();
+    }
+
+    private void TheaterPlayback()
+    {
+
     }
 }

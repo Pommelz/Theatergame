@@ -16,7 +16,7 @@ public class TextSnippet : MonoBehaviour
 
     private void Awake()
     {
-        snippetController = GameObject.Find("Canvas").GetComponent<TextSnippetController>();
+        snippetController = GameObject.Find(StringCollection.SNIPPETCONTROLLER_SO).GetComponent<TextSnippetController>();
         // text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
