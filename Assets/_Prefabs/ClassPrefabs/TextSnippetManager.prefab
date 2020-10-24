@@ -45,63 +45,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rhyme:
   - RomeoText:
-      responsePart: "Der lacht \xFCber Narben, die nie keine Wunde f\xFChlte - -
-        Aber stille! was f\xFCr ein Licht bricht aus jenem Fenster hervor? Es ist
-        der Osten, und Juliet ist die Sonne - -  (Juliette erscheint oben am Fenster.) 
-        Geh auf, sch\xF6ne Sonne, und l\xF6sche diese neidische Luna aus, die schon
-        ganz bleich und krank vor Verdru\xDF ist, da\xDF du, ihr M\xE4dchen, sch\xF6ner
-        bist als sie. Sie spricht, und sagt doch nichts; was ist das? - - Ihr Auge
-        redt, ich will ihm antworten - - Wie voreilig ich bin!  Sieh! sie lehnt ihre
-        Wange an ihre Hand! O da\xDF ich ein Handschuh an dieser Hand w\xE4re, damit
-        ich diese Wange ber\xFChren m\xF6chte!"
+      responsePart: '"He jests at scars that never felt a wound. JULIET appears above
+        at a window But, soft! what light through yonder window breaks? It is the
+        east, and Juliet is the sun. Arise, fair sun, and kill the envious moon,
+        Who is already sick and pale with grief, That thou her maid art far more
+        fair than she. She speaks yet she says nothing: what of that? Her eye discourses;
+        I will answer it. I am too bold, ''tis not to me she speaks. See, how she
+        leans her cheek upon her hand! O, that I were a glove upon that hand, That
+        I might touch that cheek! "'
       animation: 0
     julietText:
-      responsePart: "Ach! ich Ungl\xFCkliche! - -"
+      responsePart: Ay me!
+      responseSmiley: 1
+      animation: 1
+  - RomeoText:
+      responsePart: '"She speaks: O, speak again, bright angel!  "'
+      animation: 2
+    julietText:
+      responsePart: '"O Romeo, Romeo! wherefore art thou Romeo? Deny thy father and
+        refuse thy name; Or, if thou wilt not, be but sworn my love, And I''ll no
+        longer be a Capulet. "'
+      responseSmiley: 2
+      animation: 2
+  - RomeoText:
+      responsePart: Shall I hear more, or shall I speak at this?
+      animation: 3
+    julietText:
+      responsePart: '"Tis but thy name that is my enemy; Thou art thyself, though
+        not a Montague. What''s Montague? What''s in a name?  that which we call
+        a rose. By any other name would smell as sweet; So Romeo would, were he not
+        Romeo call''d, Retain that dear perfection which he owes Without that title.
+        Romeo, doff thy name, And for that name which is no part of thee Take all
+        myself. "'
+      responseSmiley: 2
+      animation: 0
+  - RomeoText:
+      responsePart: '"I take thee at thy word: Call me but love, and I''ll be new
+        baptized; Henceforth I never will be Romeo. "'
+      animation: 0
+    julietText:
+      responsePart: '"What man art thou that thus bescreen''d in night So stumblest
+        on my counsel? "'
       responseSmiley: 1
       animation: 0
   - RomeoText:
-      responsePart: "Sie redt. O, rede noch einmal, gl\xE4nzender Engel!   "
+      responsePart: '"By a name I know not how to tell thee who I am: My name, dear
+        saint, is hateful to myself, Because it is an enemy to thee; Had I it written,
+        I would tear the word. "'
       animation: 0
     julietText:
-      responsePart: "O Romeo, Romeo - - Warum bist du Romeo? - - Verl\xE4ugne deinen
-        Vater und entsage deinem Namen - - oder wenn du das nicht willt, so schw\xF6re
-        mir nur ewige Liebe und ich will keine Capulet mehr seyn."
-      responseSmiley: 2
-      animation: 0
-  - RomeoText:
-      responsePart: "Soll ich l\xE4nger zuh\xF6ren, oder auf dieses antworten?"
-      animation: 0
-    julietText:
-      responsePart: "Nicht du, blo\xDF dein Nahme ist mein Feind; du w\xFCrdest du
-        selbst seyn, wenn du gleich kein Montague w\xE4rest - - Was ist Montague?
-        - - Was ist ein Name; Das Ding das wir eine Rose nennen, w\xFCrde unter jedem
-        andern Namen eben so lieblich riechen. Romeo, gieb deinen Namen weg, und
-        f\xFCr diesen Namen, der kein Theil von dir ist, nimm mein ganzes Ich."
-      responseSmiley: 0
-      animation: 0
-  - RomeoText:
-      responsePart: 'Ich nehme dich beym Wort; nenne mich nur deinen Freund, und
-        ich will meinem Taufnamen entsagen, ich will von nun an nicht mehr Romeo
-        seyn.   '
-      animation: 0
-    julietText:
-      responsePart: "Wer bist du, der hier, in Nacht geh\xFCllt, mein einsames Selbstgespr\xE4che
-        belauscht?"
-      responseSmiley: 2
-      animation: 0
-  - RomeoText:
-      responsePart: "Durch einen Namen wei\xDF ich dir nicht zu sagen, wer ich bin;
-        mein Name, theure Heilige, ist mir selbst verha\xDFt, weil er ein Feind von
-        dir ist. Ich wollt' ihn zerreissen, wenn ich ihn geschrieben h\xE4tte."
-      animation: 0
-    julietText:
-      responsePart: So neu sie mir ist, so kenn' ich doch diese Stimme - - Bist du
-        nicht Romeo, und ein Montague?
+      responsePart: '"My ears have not yet drunk a hundred words Of that tongue''s
+        utterance, yet I know the sound: Art thou not Romeo and a Montague? "'
       responseSmiley: 2
       animation: 0
   - RomeoText:
       responsePart: "Keines von beyden, sch\xF6ne Heilige, wenn dir eines davon mi\xDFf\xE4llt."
-      animation: 0
+      animation: 4
     julietText:
       responsePart: "Wie kamst du hieher, sage mir das, und warum? Die Garten-Mauer
         ist hoch und schwer zu ersteigen, und der Ort Tod, wenn dich einer von meinen

@@ -54,16 +54,16 @@ public class TextSnippetController : MonoBehaviour
 
         switch (julietResponse.responseSmiley)
         {
-            case Smiley.HAPPY:
+            case Smiley.LOVE:
                 wrong1 = SpawnWrongResponseByEmotion(Smiley.SAD);
-                wrong2 = SpawnWrongResponseByEmotion(Smiley.BANANA);
+                wrong2 = SpawnWrongResponseByEmotion(Smiley.DRAMA);
                 break;
             case Smiley.SAD:
-                wrong1 = SpawnWrongResponseByEmotion(Smiley.HAPPY);
-                wrong2 = SpawnWrongResponseByEmotion(Smiley.BANANA);
+                wrong1 = SpawnWrongResponseByEmotion(Smiley.LOVE);
+                wrong2 = SpawnWrongResponseByEmotion(Smiley.DRAMA);
                 break;
-            case Smiley.BANANA:
-                wrong1 = SpawnWrongResponseByEmotion(Smiley.HAPPY);
+            case Smiley.DRAMA:
+                wrong1 = SpawnWrongResponseByEmotion(Smiley.LOVE);
                 wrong2 = SpawnWrongResponseByEmotion(Smiley.SAD);
                 break;
         }
@@ -114,13 +114,13 @@ public class TextSnippetController : MonoBehaviour
         string smileystring = "";
         switch (_emotion)
         {
-            case Smiley.HAPPY:
+            case Smiley.LOVE:
                 smileystring = ":)";
                 break;
             case Smiley.SAD:
                 smileystring = ":(";
                 break;
-            case Smiley.BANANA:
+            case Smiley.DRAMA:
                 smileystring = ":P";
                 break;
         }
