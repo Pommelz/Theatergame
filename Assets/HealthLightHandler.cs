@@ -68,12 +68,13 @@ public class HealthLightHandler : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (damage == 3) ResetDamage();
-        else if (damage < 3)
+        if (damage < 3)
         {
 
             healthLights[damage].color = Color.red;
             damage++;
+
+            if (damage == 3) ResetDamage();
         }
     }
 }

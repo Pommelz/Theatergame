@@ -160,6 +160,7 @@ public class TextSnippetController : MonoBehaviour
         }
         else
         {
+            HealthLightHandler.Instance.TakeDamage();
             wrongInputs++;
             wrongAnswerIDs.Add(roundCount);
             if (wrongInputs == 3)
