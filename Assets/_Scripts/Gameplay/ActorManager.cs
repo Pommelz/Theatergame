@@ -7,6 +7,8 @@ public class ActorManager : MonoBehaviour
 {
     private List<Actor> actors = new List<Actor>();
     int actorID = 0;
+    public delegate void PassingAudioSource_EventType(AudioSource source);
+    public static event PassingAudioSource_EventType OnActorChanged;
 
     void OnEnable()
     {
@@ -43,7 +45,7 @@ public class ActorManager : MonoBehaviour
             actorID = 0;
             actors[actorID].MoveToStage();
         }
-
+        OnActorChanged?.Invoke(actors[actorID].transform.GetChild(0).GetComponent<AudioSource>()); ;
         actorID++;
         //if (actorID == actors.Count)
         //{

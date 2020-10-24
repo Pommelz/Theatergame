@@ -26,12 +26,15 @@ public class TextSnippetController : MonoBehaviour
     public delegate void PassingFloat_EventType(float _float);
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
     public delegate void PassingAnimationTag_EventType(AnimationTag emotion);
+    public delegate void PassingAudioClip_EventType(AudioClip clip);
 
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
     public static event PassingFloat_EventType OnMoodIncrease;
     public static event SendMessage_EventType OnActorSwap;
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
+
+    public static event PassingAudioClip_EventType OnActorResponse;
 
 
 
@@ -153,6 +156,8 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
+        OnActorResponse?.Invoke(_smileyanswerwrapper.myClip);
+
         if (_correctAnswer)
         {
             float increase = 1f / (float)rhyme.Count;

@@ -9,6 +9,7 @@ public class EmotionAnswerWrapper
     public string responsePart;
     public Smiley responseSmiley;
     public AnimationTag animation;
+    public AudioClip myClip;
 }
 
 [System.Serializable]
@@ -16,4 +17,5 @@ public class AnimationAnswerWrapper
 {
     public string responsePart;
     public AnimationTag animation;
+    public AudioClip myClip;
 }
