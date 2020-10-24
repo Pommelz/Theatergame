@@ -534,6 +534,31 @@ MonoBehaviour:
         - - Was ist ein Name; Das Ding das wir eine Rose nennen, w\xFCrde unter jedem
         andern Namen eben so lieblich riechen. Romeo, gieb deinen Namen weg, und
         f\xFCr diesen Namen, der kein Theil von dir ist, nimm mein ganzes Ich."
+      responseSmiley: 0
+  - RomeoText: 'Ich nehme dich beym Wort; nenne mich nur deinen Freund, und ich will
+      meinem Taufnamen entsagen, ich will von nun an nicht mehr Romeo seyn.   '
+    julietText:
+      responsePart: "Wer bist du, der hier, in Nacht geh\xFCllt, mein einsames Selbstgespr\xE4che
+        belauscht?"
+      responseSmiley: 2
+  - RomeoText: "Durch einen Namen wei\xDF ich dir nicht zu sagen, wer ich bin; mein
+      Name, theure Heilige, ist mir selbst verha\xDFt, weil er ein Feind von dir
+      ist. Ich wollt' ihn zerreissen, wenn ich ihn geschrieben h\xE4tte."
+    julietText:
+      responsePart: So neu sie mir ist, so kenn' ich doch diese Stimme - - Bist du
+        nicht Romeo, und ein Montague?
+      responseSmiley: 2
+  - RomeoText: "Keines von beyden, sch\xF6ne Heilige, wenn dir eines davon mi\xDFf\xE4llt."
+    julietText:
+      responsePart: "Wie kamst du hieher, sage mir das, und warum? Die Garten-Mauer
+        ist hoch und schwer zu ersteigen, und der Ort Tod, wenn dich einer von meinen
+        Verwandten gewahr w\xFCrde.   "
+      responseSmiley: 1
+  - RomeoText: "Mit der Liebe leichten Fl\xFCgeln \xFCberflog ich diese Mauern, einen
+      zu schwachen Wall gegen den m\xE4chtigsten Gott; was die Liebe thun kan, dazu
+      hat sie auch den Muth;"
+    julietText:
+      responsePart: 'Wenn meine Verwandten dich sehen,  so ermorden sie dich.   '
       responseSmiley: 1
   wrongAnswers:
   - responsePart: "bl\xF6\xF6\xF6\xF6\xF6\xF6h"
@@ -556,9 +581,6 @@ MonoBehaviour:
     responseSmiley: 1
   - responsePart: PPPPPPPPPPPPPP
     responseSmiley: 2
-  HappyAnswers: []
-  SadAnswers: []
-  BananaAnswers: []
   SnippetBttn: {fileID: 1497986158983820992, guid: 151140991f53944439563510d980bfec,
     type: 3}
 --- !u!1 &1776984808

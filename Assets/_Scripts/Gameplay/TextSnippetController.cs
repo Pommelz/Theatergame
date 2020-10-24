@@ -11,21 +11,12 @@ public class TextSnippetController : MonoBehaviour
     public List<AnswerListWrapper> rhyme = new List<AnswerListWrapper>();
     public List<EmotionAnswerWrapper> wrongAnswers = new List<EmotionAnswerWrapper>();
 
-    public List<string> HappyAnswers = new List<string>();
-    public List<string> SadAnswers = new List<string>();
-    public List<string> BananaAnswers = new List<string>();
-
     public Transform SnippetBttn;
     ObjectPool bttnPool;
 
-    private AnswerListWrapper activeRhyme;
     private List<EmotionAnswerWrapper> chosenText = new List<EmotionAnswerWrapper>();
     private List<Transform> currBttns = new List<Transform>();
     private int roundCount = 0;
-
-    private Smiley HappyResponse;
-    private Smiley SadResponse;
-    private Smiley BananaResponse;
 
     void Start()
     {
@@ -36,20 +27,10 @@ public class TextSnippetController : MonoBehaviour
     private void StartRound()
     {
         int randomRhyme = Random.Range(0, rhyme.Count);
-        activeRhyme = rhyme[randomRhyme];
         RomeoText();
-        //SpawnSnippetBttns(roundCount);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RomeoText();
-        }
-    }
-
-    private void SpawnSnippetBttns(int round)
+    private void SpawnResponseBttns(int round)
     {
         int r = Random.Range(0, 3);
 
@@ -59,7 +40,6 @@ public class TextSnippetController : MonoBehaviour
 
         EmotionAnswerWrapper julietResponse = rhyme[roundCount].julietText;
         List<EmotionAnswerWrapper> answers = new List<EmotionAnswerWrapper>();
-        //answers.Add(julietResponse);
 
         switch (julietResponse.responseSmiley)
         {
@@ -97,15 +77,16 @@ public class TextSnippetController : MonoBehaviour
             else
             {
                 ts.isRhyme = false;
+                Debug.Log(answers[0].responseSmiley);
+                Debug.Log(answers[0].responsePart);
                 bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(answers[0].responseSmiley));
+
                 ts.myWrapper = answers[0];
                 answers.Remove(answers[0]);
 
             }
-            //ts.SetBttnText();
         }
         roundCount++;
-        //RomeoText();
     }
 
     private void RomeoText()
@@ -114,7 +95,7 @@ public class TextSnippetController : MonoBehaviour
         Debug.Log(text);
 
         //TODO: spawn snippets on romeo animation event
-        SpawnSnippetBttns(roundCount);
+        SpawnResponseBttns(roundCount);
     }
 
     public string ReturnSmileyStringByEmotion(Smiley _emotion)
@@ -165,7 +146,7 @@ public class TextSnippetController : MonoBehaviour
 
         currBttns.Clear();
         //TODO: Call this function after the actor is done
-        if (roundCount < 3)
+        if (roundCount < rhyme.Count -1)
             RomeoText();
         else
             foreach (EmotionAnswerWrapper s in chosenText)
