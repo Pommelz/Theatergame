@@ -8,6 +8,16 @@ namespace Collections.Enums
     {
         HAPPY,
         SAD,
-        BANANA
+        BANANA,
+    }
+
+    public enum AnimationTag
+    {
+        ACCUSING,
+        BASE,
+        DISPAIR,
+        DRAMA,
+        LOOKINGFORLINES,
+        TALKINGNORMAL,
     }
 }

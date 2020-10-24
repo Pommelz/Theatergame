@@ -7,7 +7,7 @@ namespace Collections.ListWrapping
     [System.Serializable]
     public class AnswerListWrapper
     {
-        public string RomeoText;
-        public EmotionAnswerWrapper  julietText;
+        public AnimationAnswerWrapper RomeoText;
+        public EmotionAnswerWrapper julietText;
     }
 }

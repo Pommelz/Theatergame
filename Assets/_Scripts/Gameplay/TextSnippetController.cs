@@ -20,8 +20,12 @@ public class TextSnippetController : MonoBehaviour
 
 
     public delegate void PassingString_EventType(string _text);
-    public static event PassingString_EventType OnRomeoText;
+    public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
+
+   // public static event PassingString_EventType OnRomeoText;
     public static event PassingString_EventType OnActorText;
+    public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
+    
 
     void Start()
     {
@@ -96,9 +100,9 @@ public class TextSnippetController : MonoBehaviour
 
     private void RomeoText()
     {
-        string text = rhyme[roundCount].RomeoText;
+        string text = rhyme[roundCount].RomeoText.responsePart;
         Debug.Log(text);
-
+        OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
         //TODO: spawn snippets on romeo animation event
         SpawnResponseBttns(roundCount);
     }
@@ -160,7 +164,7 @@ public class TextSnippetController : MonoBehaviour
         }
         //RomeoText();
     }
-
+    
     private void TheaterPlayback()
     {
 

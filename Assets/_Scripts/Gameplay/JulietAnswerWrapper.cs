@@ -8,4 +8,13 @@ public class EmotionAnswerWrapper
 {
     public string responsePart;
     public Smiley responseSmiley;
+    public AnimationTag animation;
+}
+
+[System.Serializable]
+public class AnimationAnswerWrapper
+{
+    public string responsePart;
+    public AnimationTag animation;
+
 }

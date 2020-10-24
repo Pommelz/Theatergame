@@ -12,8 +12,12 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TextSnippetController.OnRomeoText += SetRomeoText;
         TextSnippetController.OnActorText += SetJulietText;
+    }
+
+    private void OnDisable()
+    {
+        TextSnippetController.OnActorText -= SetJulietText;
     }
 
 
