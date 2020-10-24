@@ -162,7 +162,7 @@ public class TextSnippetController : MonoBehaviour
         {
             wrongInputs++;
             wrongAnswerIDs.Add(roundCount);
-            if (wrongInputs == 1)
+            if (wrongInputs == 3)
             {
                 OnActorSwap?.Invoke();
                 wrongInputs = 0;
@@ -183,13 +183,9 @@ public class TextSnippetController : MonoBehaviour
         {
             Debug.Log("end");
             isPlayback = true;
-            //foreach (EmotionAnswerWrapper s in chosenText)
-            //{
-            //    Debug.Log("results: " + s.responsePart);
-            //}
-            //TheaterPlayback();
+            OnActorSwap?.Invoke();
+            TheaterPlayback();
         }
-        //RomeoText();
     }
     private IEnumerator TalkingDelay(bool isRomeoDelay)
     {
@@ -221,8 +217,11 @@ public class TextSnippetController : MonoBehaviour
             {
                 OnActorSwap?.Invoke();
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             Debug.Log(chosenText[i].responsePart);
+            OnResponseEmotion(chosenText[i].animation);
+            yield return new WaitForSeconds(3f);
+            RomeoText();
             yield return null;
         }
         yield return null;
