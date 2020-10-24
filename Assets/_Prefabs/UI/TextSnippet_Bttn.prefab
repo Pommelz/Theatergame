@@ -278,3 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRhyme: 0
+  wrongAnsweriD: 0
+  myWrapper:
+    responsePart: 
+    responseSmiley: 0
+  text: {fileID: 8748893395540689664}
