@@ -44,23 +44,26 @@ public class TextSnippetController : MonoBehaviour
         switch (julietResponse.responseSmiley)
         {
             case Smiley.HAPPY:
-                wrong1 = SpawnWrongBttnByEmotion(Smiley.SAD);
-                wrong2 = SpawnWrongBttnByEmotion(Smiley.BANANA);
+                wrong1 = SpawnWrongResponseByEmotion(Smiley.SAD);
+                wrong2 = SpawnWrongResponseByEmotion(Smiley.BANANA);
                 break;
             case Smiley.SAD:
-                wrong1 = SpawnWrongBttnByEmotion(Smiley.HAPPY);
-                wrong1 = SpawnWrongBttnByEmotion(Smiley.BANANA);
+                wrong1 = SpawnWrongResponseByEmotion(Smiley.HAPPY);
+                wrong2 = SpawnWrongResponseByEmotion(Smiley.BANANA);
                 break;
             case Smiley.BANANA:
-                wrong1 = SpawnWrongBttnByEmotion(Smiley.HAPPY);
-                wrong2 = SpawnWrongBttnByEmotion(Smiley.SAD);
+                wrong1 = SpawnWrongResponseByEmotion(Smiley.HAPPY);
+                wrong2 = SpawnWrongResponseByEmotion(Smiley.SAD);
                 break;
         }
 
         answers.Add(wrong1);
         answers.Add(wrong2);
+
+        Debug.Log(answers.Count);
         int randomJuliet = Random.Range(0, 3);
 
+        //spawn three bttns
         for (int i = 0; i < 3; i++)
         {
 
@@ -77,8 +80,8 @@ public class TextSnippetController : MonoBehaviour
             else
             {
                 ts.isRhyme = false;
-                Debug.Log(answers[0].responseSmiley);
-                Debug.Log(answers[0].responsePart);
+                //Debug.Log(answers[0].responseSmiley);
+                //Debug.Log(answers[0].responsePart);
                 bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(answers[0].responseSmiley));
 
                 ts.myWrapper = answers[0];
@@ -112,11 +115,14 @@ public class TextSnippetController : MonoBehaviour
             case Smiley.BANANA:
                 smileystring = ":P";
                 break;
+            default:
+                Debug.Log("nothing matches");
+                break;
         }
         return smileystring;
     }
 
-    private EmotionAnswerWrapper SpawnWrongBttnByEmotion(Smiley _wantedEmotion)
+    private EmotionAnswerWrapper SpawnWrongResponseByEmotion(Smiley _wantedEmotion)
     {
         EmotionAnswerWrapper chosen = null;
         foreach (EmotionAnswerWrapper saw in wrongAnswers)
@@ -124,13 +130,11 @@ public class TextSnippetController : MonoBehaviour
             if (saw.responseSmiley == _wantedEmotion)
             {
                 chosen = saw;
+                Debug.Log(saw.responseSmiley);
                 break;
             }
         }
-        if (chosen == null)
-        {
-            Debug.Log("chosen null");
-        }
+        
         //wrongAnswers.Remove(chosen);
         return chosen;
     }
@@ -146,7 +150,7 @@ public class TextSnippetController : MonoBehaviour
 
         currBttns.Clear();
         //TODO: Call this function after the actor is done
-        if (roundCount < rhyme.Count -1)
+        if (roundCount < rhyme.Count)
             RomeoText();
         else
             foreach (EmotionAnswerWrapper s in chosenText)

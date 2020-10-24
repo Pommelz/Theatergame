@@ -520,7 +520,7 @@ MonoBehaviour:
       Wange ber\xFChren m\xF6chte!   "
     julietText:
       responsePart: "Ach! ich Ungl\xFCkliche! - -"
-      responseSmiley: 0
+      responseSmiley: 1
   - RomeoText: "Sie redt. O, rede noch einmal, gl\xE4nzender Engel!   "
     julietText:
       responsePart: "O Romeo, Romeo - - Warum bist du Romeo? - - Verl\xE4ugne deinen
@@ -583,6 +583,7 @@ MonoBehaviour:
     responseSmiley: 2
   SnippetBttn: {fileID: 1497986158983820992, guid: 151140991f53944439563510d980bfec,
     type: 3}
+  answers: []
 --- !u!1 &1776984808
 GameObject:
   m_ObjectHideFlags: 0
