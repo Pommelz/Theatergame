@@ -36,13 +36,15 @@ public class SpotlightController : MonoBehaviour
     #endregion
 
     public Light[] spotlights;
-
-    private Transform target;
+    
+    [SerializeField] private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spotlights = new Light[GetComponentsInChildren<Light>().Length];
+        spotlights = GetComponentsInChildren<Light>();   
+
     }
 
     // Update is called once per frame
