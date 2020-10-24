@@ -33,14 +33,22 @@ public class ActorManager : MonoBehaviour
     {
         if (actorID > 0)
             actors[(actorID - 1)].MoveBack();
+        if (actorID < actors.Count - 1)
+        {
+            actors[actorID].MoveToStage();
 
-        actors[actorID].MoveToStage();
-
-        actorID++;
-        if (actorID == actors.Count)
+        }
+        else
         {
             actorID = 0;
+            actors[actorID].MoveToStage();
         }
+
+        actorID++;
+        //if (actorID == actors.Count)
+        //{
+        //    actorID = 0;
+        //}
         Debug.Log(actorID.ToString());
     }
 
