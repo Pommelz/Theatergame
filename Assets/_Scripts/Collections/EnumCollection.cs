@@ -6,8 +6,17 @@ namespace Collections.Enums
 {
     public enum Smiley
     {
-        HAPPY,
+        LOVE,
         SAD,
-        BANANA
+        DRAMA,
+    }
+
+    public enum AnimationTag
+    {
+        ACCUSING,
+        DISPAIR,
+        DRAMA,
+        LOOKINGFORLINES,
+        TALKINGNORMAL,
     }
 }
