@@ -16,5 +16,4 @@ public class AnimationAnswerWrapper
 {
     public string responsePart;
     public AnimationTag animation;
-
 }

@@ -16,18 +16,25 @@ public class TextSnippetController : MonoBehaviour
 
     private List<EmotionAnswerWrapper> chosenText = new List<EmotionAnswerWrapper>();
     private List<Transform> currBttns = new List<Transform>();
+    private List<int> wrongAnswerIDs = new List<int>();
+
     private int roundCount = 0;
+    private int wrongInputs = 0;
+    private bool isPlayback = false;
 
-
-    public delegate void PassingString_EventType(string _text);
+    public delegate void SendMessage_EventType();
     public delegate void PassingFloat_EventType(float _float);
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
+    public delegate void PassingAnimationTag_EventType(AnimationTag emotion);
 
-   // public static event PassingString_EventType OnRomeoText;
-    public static event PassingString_EventType OnActorText;
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
     public static event PassingFloat_EventType OnMoodIncrease;
-    
+    public static event SendMessage_EventType OnActorSwap;
+    public static event PassingAnimationTag_EventType OnResponseEmotion;
+    public static event SendMessage_EventType OnReplayStarts;
+
+
+
 
     void Start()
     {
@@ -106,7 +113,7 @@ public class TextSnippetController : MonoBehaviour
         Debug.Log(text);
         OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
         //TODO: spawn snippets on romeo animation event
-        SpawnResponseBttns(roundCount);
+        StartCoroutine(TalkingDelay(false));
     }
 
     public string ReturnSmileyStringByEmotion(Smiley _emotion)
@@ -138,18 +145,30 @@ public class TextSnippetController : MonoBehaviour
                 break;
             }
         }
-        
+
         //wrongAnswers.Remove(chosen);
         return chosen;
     }
 
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
-        if(_correctAnswer)
+        OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
+        if (_correctAnswer)
         {
             float increase = 1f / (float)rhyme.Count;
             OnMoodIncrease?.Invoke(increase);
         }
+        else
+        {
+            wrongInputs++;
+            wrongAnswerIDs.Add(roundCount);
+            if (wrongInputs == 1)
+            {
+                OnActorSwap?.Invoke();
+                wrongInputs = 0;
+            }
+        }
+
         chosenText.Add(_smileyanswerwrapper);
         foreach (Transform t in currBttns)
         {
@@ -159,21 +178,53 @@ public class TextSnippetController : MonoBehaviour
         currBttns.Clear();
         //TODO: Call this function after the actor is done
         if (roundCount < rhyme.Count)
-            RomeoText();
+            StartCoroutine(TalkingDelay(true));
         else
         {
             Debug.Log("end");
-            foreach (EmotionAnswerWrapper s in chosenText)
-            {
-                Debug.Log("results: " +s.responsePart);
-            }
-
+            isPlayback = true;
+            //foreach (EmotionAnswerWrapper s in chosenText)
+            //{
+            //    Debug.Log("results: " + s.responsePart);
+            //}
+            //TheaterPlayback();
         }
         //RomeoText();
     }
-    
+    private IEnumerator TalkingDelay(bool isRomeoDelay)
+    {
+        yield return new WaitForSeconds(3f);
+        if (isRomeoDelay)
+            RomeoText();
+        else
+        {
+            if (!isPlayback)
+                SpawnResponseBttns(roundCount);
+
+        }
+        yield return null;
+    }
+
     private void TheaterPlayback()
     {
+        OnReplayStarts?.Invoke();
+        StartCoroutine(PlayBack());
+    }
 
+    IEnumerator PlayBack()
+    {
+        roundCount = 0;
+        RomeoText();
+        for (int i = 0; i < chosenText.Count; i++)
+        {
+            if (wrongAnswerIDs.Contains(i))
+            {
+                OnActorSwap?.Invoke();
+            }
+            yield return new WaitForSeconds(3f);
+            Debug.Log(chosenText[i].responsePart);
+            yield return null;
+        }
+        yield return null;
     }
 }
