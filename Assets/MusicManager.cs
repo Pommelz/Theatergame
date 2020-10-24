@@ -6,6 +6,8 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] AudioClip[] musicClips = new AudioClip[4];
     AudioSource myPlayer;
+    int songCounter;
+    [SerializeField] float increaseRate = 0.05f;
 
     #region Singleton
     static MusicManager instance;
@@ -33,10 +35,35 @@ public class MusicManager : MonoBehaviour
             instance = this;
         }
 
-        DontDestroyOnLoad(this.gameObject);
     }
     #endregion
 
+    private void Start()
+    {
+        myPlayer = GetComponent<AudioSource>();
+        songCounter = 0;
+        PlayNextSong();
+    }
+
+    public void PlayNextSong()
+    {
+        StartCoroutine(FadeInMusic(musicClips[songCounter]));
+    }
+
+    private IEnumerator FadeInMusic(AudioClip _newClip)
+    {
+        float temp = myPlayer.volume;
+        myPlayer.clip = _newClip;
+        myPlayer.volume = 0.01f;
+        myPlayer.Play();
+        while (myPlayer.volume <= temp)
+        {
+            myPlayer.volume += increaseRate;
+            yield return null;
+        }
+        songCounter++;
+        yield return null;
+    }
 
     public void PlayFinalTheme()
     {
@@ -44,24 +71,16 @@ public class MusicManager : MonoBehaviour
         myPlayer.Play();
     }
 
-    public IEnumerator FadeMusic()
+    public IEnumerator FadeOutMusic()
     {
-        while(myPlayer.volume >= 0.01)
+        float temp = myPlayer.volume;
+        while (myPlayer.volume >= 0.01f)
         {
-            myPlayer.volume -= 0.05f;
+            myPlayer.volume -= increaseRate;
             yield return null;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        myPlayer.Stop();
+        myPlayer.volume = temp;
+        yield return null;
     }
 }

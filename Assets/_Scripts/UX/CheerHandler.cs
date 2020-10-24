@@ -6,7 +6,34 @@ public class CheerHandler : MonoBehaviour
 {
     // Start is called before the first frame update
 
-   
+    #region Singleton
+    static CheerHandler instance;
+    public static CheerHandler Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                Debug.LogError("[SCENECONTROLLER]: i'm the instance, i do not exist.");
+            }
+
+            return instance;
+        }
+    }
+    private void Awake()
+    {
+        if (instance && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+
+    }
+    #endregion
 
     [SerializeField] private AudioClip[] CheerVariants;
     private AudioSource[] audios;
@@ -14,6 +41,27 @@ public class CheerHandler : MonoBehaviour
     private void Start()
     {
         SetupAudioStructure();
+    }
+
+    public void PauseAll()
+    {
+        for (int i = 0; i < audios.Length; i++)
+        {
+            StartCoroutine(FadeAudio(audios[i]));
+        }
+    }
+
+    private IEnumerator FadeAudio(AudioSource myPlayer)
+    {
+        float temp = myPlayer.volume;
+        while (myPlayer.volume >= 0.01)
+        {
+            myPlayer.volume -= 0.05f;
+            yield return null;
+        }
+        myPlayer.Stop();
+        myPlayer.volume = temp;
+        yield return null;
     }
 
     public void PlayRandomCheer()
