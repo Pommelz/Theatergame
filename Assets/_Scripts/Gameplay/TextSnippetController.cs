@@ -20,11 +20,13 @@ public class TextSnippetController : MonoBehaviour
 
 
     public delegate void PassingString_EventType(string _text);
+    public delegate void PassingFloat_EventType(float _float);
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
 
    // public static event PassingString_EventType OnRomeoText;
     public static event PassingString_EventType OnActorText;
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
+    public static event PassingFloat_EventType OnMoodIncrease;
     
 
     void Start()
@@ -143,6 +145,11 @@ public class TextSnippetController : MonoBehaviour
 
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
+        if(_correctAnswer)
+        {
+            float increase = 1f / (float)rhyme.Count;
+            OnMoodIncrease?.Invoke(increase);
+        }
         chosenText.Add(_smileyanswerwrapper);
         foreach (Transform t in currBttns)
         {

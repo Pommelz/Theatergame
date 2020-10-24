@@ -44,25 +44,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rhyme:
-  - RomeoText: "Der lacht \xFCber Narben, die nie keine Wunde f\xFChlte - - Aber
-      stille! was f\xFCr ein Licht bricht aus jenem Fenster hervor? Es ist der Osten,
-      und Juliet ist die Sonne - -  (Juliette erscheint oben am Fenster.)  Geh auf,
-      sch\xF6ne Sonne, und l\xF6sche diese neidische Luna aus, die schon ganz bleich
-      und krank vor Verdru\xDF ist, da\xDF du, ihr M\xE4dchen, sch\xF6ner bist als
-      sie. Sie spricht, und sagt doch nichts; was ist das? - - Ihr Auge redt, ich
-      will ihm antworten - - Wie voreilig ich bin!  Sieh! sie lehnt ihre Wange an
-      ihre Hand! O da\xDF ich ein Handschuh an dieser Hand w\xE4re, damit ich diese
-      Wange ber\xFChren m\xF6chte!   "
+  - RomeoText:
+      responsePart: "Der lacht \xFCber Narben, die nie keine Wunde f\xFChlte - -
+        Aber stille! was f\xFCr ein Licht bricht aus jenem Fenster hervor? Es ist
+        der Osten, und Juliet ist die Sonne - -  (Juliette erscheint oben am Fenster.) 
+        Geh auf, sch\xF6ne Sonne, und l\xF6sche diese neidische Luna aus, die schon
+        ganz bleich und krank vor Verdru\xDF ist, da\xDF du, ihr M\xE4dchen, sch\xF6ner
+        bist als sie. Sie spricht, und sagt doch nichts; was ist das? - - Ihr Auge
+        redt, ich will ihm antworten - - Wie voreilig ich bin!  Sieh! sie lehnt ihre
+        Wange an ihre Hand! O da\xDF ich ein Handschuh an dieser Hand w\xE4re, damit
+        ich diese Wange ber\xFChren m\xF6chte!"
+      animation: 0
     julietText:
       responsePart: "Ach! ich Ungl\xFCkliche! - -"
       responseSmiley: 1
-  - RomeoText: "Sie redt. O, rede noch einmal, gl\xE4nzender Engel!   "
+      animation: 0
+  - RomeoText:
+      responsePart: "Sie redt. O, rede noch einmal, gl\xE4nzender Engel!   "
+      animation: 0
     julietText:
       responsePart: "O Romeo, Romeo - - Warum bist du Romeo? - - Verl\xE4ugne deinen
         Vater und entsage deinem Namen - - oder wenn du das nicht willt, so schw\xF6re
         mir nur ewige Liebe und ich will keine Capulet mehr seyn."
       responseSmiley: 2
-  - RomeoText: "Soll ich l\xE4nger zuh\xF6ren, oder auf dieses antworten?"
+      animation: 0
+  - RomeoText:
+      responsePart: "Soll ich l\xE4nger zuh\xF6ren, oder auf dieses antworten?"
+      animation: 0
     julietText:
       responsePart: "Nicht du, blo\xDF dein Nahme ist mein Feind; du w\xFCrdest du
         selbst seyn, wenn du gleich kein Montague w\xE4rest - - Was ist Montague?
@@ -70,51 +78,75 @@ MonoBehaviour:
         andern Namen eben so lieblich riechen. Romeo, gieb deinen Namen weg, und
         f\xFCr diesen Namen, der kein Theil von dir ist, nimm mein ganzes Ich."
       responseSmiley: 0
-  - RomeoText: 'Ich nehme dich beym Wort; nenne mich nur deinen Freund, und ich will
-      meinem Taufnamen entsagen, ich will von nun an nicht mehr Romeo seyn.   '
+      animation: 0
+  - RomeoText:
+      responsePart: 'Ich nehme dich beym Wort; nenne mich nur deinen Freund, und
+        ich will meinem Taufnamen entsagen, ich will von nun an nicht mehr Romeo
+        seyn.   '
+      animation: 0
     julietText:
       responsePart: "Wer bist du, der hier, in Nacht geh\xFCllt, mein einsames Selbstgespr\xE4che
         belauscht?"
       responseSmiley: 2
-  - RomeoText: "Durch einen Namen wei\xDF ich dir nicht zu sagen, wer ich bin; mein
-      Name, theure Heilige, ist mir selbst verha\xDFt, weil er ein Feind von dir
-      ist. Ich wollt' ihn zerreissen, wenn ich ihn geschrieben h\xE4tte."
+      animation: 0
+  - RomeoText:
+      responsePart: "Durch einen Namen wei\xDF ich dir nicht zu sagen, wer ich bin;
+        mein Name, theure Heilige, ist mir selbst verha\xDFt, weil er ein Feind von
+        dir ist. Ich wollt' ihn zerreissen, wenn ich ihn geschrieben h\xE4tte."
+      animation: 0
     julietText:
       responsePart: So neu sie mir ist, so kenn' ich doch diese Stimme - - Bist du
         nicht Romeo, und ein Montague?
       responseSmiley: 2
-  - RomeoText: "Keines von beyden, sch\xF6ne Heilige, wenn dir eines davon mi\xDFf\xE4llt."
+      animation: 0
+  - RomeoText:
+      responsePart: "Keines von beyden, sch\xF6ne Heilige, wenn dir eines davon mi\xDFf\xE4llt."
+      animation: 0
     julietText:
       responsePart: "Wie kamst du hieher, sage mir das, und warum? Die Garten-Mauer
         ist hoch und schwer zu ersteigen, und der Ort Tod, wenn dich einer von meinen
         Verwandten gewahr w\xFCrde.   "
       responseSmiley: 1
-  - RomeoText: "Mit der Liebe leichten Fl\xFCgeln \xFCberflog ich diese Mauern, einen
-      zu schwachen Wall gegen den m\xE4chtigsten Gott; was die Liebe thun kan, dazu
-      hat sie auch den Muth;"
+      animation: 0
+  - RomeoText:
+      responsePart: "Mit der Liebe leichten Fl\xFCgeln \xFCberflog ich diese Mauern,
+        einen zu schwachen Wall gegen den m\xE4chtigsten Gott; was die Liebe thun
+        kan, dazu hat sie auch den Muth;"
+      animation: 0
     julietText:
       responsePart: 'Wenn meine Verwandten dich sehen,  so ermorden sie dich.   '
       responseSmiley: 1
+      animation: 0
   wrongAnswers:
   - responsePart: "bl\xF6\xF6\xF6\xF6\xF6\xF6h"
     responseSmiley: 1
+    animation: 0
   - responsePart: bllliiiiiiiiiiiiiiiiiiiiiiiii
     responseSmiley: 2
+    animation: 0
   - responsePart: aaaaaaaaaaaaaaaaa
     responseSmiley: 0
+    animation: 0
   - responsePart: hhhhhhhhhhhhhhh
     responseSmiley: 1
+    animation: 0
   - responsePart: kkkkkkkkkkkkkkkk
     responseSmiley: 2
+    animation: 0
   - responsePart: UUUUUUU
     responseSmiley: 1
+    animation: 0
   - responsePart: LLLLLLLLLLL
     responseSmiley: 2
+    animation: 0
   - responsePart: BBBBBBBBBB
     responseSmiley: 0
+    animation: 0
   - responsePart: "\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6"
     responseSmiley: 1
+    animation: 0
   - responsePart: PPPPPPPPPPPPPP
     responseSmiley: 2
+    animation: 0
   SnippetBttn: {fileID: 1497986158983820992, guid: 151140991f53944439563510d980bfec,
     type: 3}
