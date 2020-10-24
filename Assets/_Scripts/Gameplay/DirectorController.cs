@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class DirectorController : MonoBehaviour
 {
     Animator anim;
@@ -32,24 +31,22 @@ public class DirectorController : MonoBehaviour
             case Collections.Enums.AnimationTag.ACCUSING:
                 animationID = 1;
                 break;
-            case Collections.Enums.AnimationTag.BASE:
+            case Collections.Enums.AnimationTag.DISPAIR:
                 animationID = 2;
                 break;
-            case Collections.Enums.AnimationTag.DISPAIR:
+            case Collections.Enums.AnimationTag.DRAMA:
                 animationID = 3;
                 break;
-            case Collections.Enums.AnimationTag.DRAMA:
+            case Collections.Enums.AnimationTag.LOOKINGFORLINES:
                 animationID = 4;
                 break;
-            case Collections.Enums.AnimationTag.LOOKINGFORLINES:
-                animationID = 5;
-                break;
             case Collections.Enums.AnimationTag.TALKINGNORMAL:
-                animationID = 6;
+                animationID = 5;
                 break;
         }
 
         anim.SetInteger("animID", animationID);
+        anim.SetTrigger("playAnim");
     }
 
     void Start()

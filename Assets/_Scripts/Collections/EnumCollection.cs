@@ -14,7 +14,6 @@ namespace Collections.Enums
     public enum AnimationTag
     {
         ACCUSING,
-        BASE,
         DISPAIR,
         DRAMA,
         LOOKINGFORLINES,
