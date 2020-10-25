@@ -14,6 +14,7 @@ public class SynchronizationHandler : MonoBehaviour
         TextSnippetController.OnActorResponse += StartJuliaSynchro;
         TextSnippetController.OnRomeoAnimation += StartRomeoSynchro;
         TextSnippetController.OnReplayStarts += Replaystarts;
+        TextSnippetController.OnRomeoSkips += SkipRomeo;
         ActorManager.OnActorChanged += SetJuliaSource;
     }
 
@@ -22,6 +23,8 @@ public class SynchronizationHandler : MonoBehaviour
     {
         TextSnippetController.OnActorResponse -= StartJuliaSynchro;
         TextSnippetController.OnRomeoAnimation -= StartRomeoSynchro;
+        TextSnippetController.OnReplayStarts -= Replaystarts;
+        TextSnippetController.OnRomeoSkips -= SkipRomeo;
         ActorManager.OnActorChanged -= SetJuliaSource;
     }
 
@@ -56,5 +59,9 @@ public class SynchronizationHandler : MonoBehaviour
         julia = source;
     }
 
+    private void SkipRomeo()
+    {
+        romeo.Stop();
+    }
     // Start is called before the first frame update6
 }
