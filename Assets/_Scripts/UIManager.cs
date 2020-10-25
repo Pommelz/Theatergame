@@ -74,15 +74,6 @@ public class UIManager : MonoBehaviour
         actorText = actorPnl.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchCamera();
-        }
-    }
-
     private void SetRomeoText(AnimationAnswerWrapper _wrapper)
     {
         if (isReplay)
