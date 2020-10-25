@@ -27,8 +27,8 @@ public class TextSnippet : MonoBehaviour
 
     public void SetBttnText()
     {
-       // Debug.Log(snippetController.gameObject.name /*+ text.gameObject.name */+ myWrapper.responseSmiley);
-
-        text.SetText(snippetController.ReturnSmileyStringByEmotion(myWrapper.responseSmiley));
+        // Debug.Log(snippetController.gameObject.name /*+ text.gameObject.name */+ myWrapper.responseSmiley);
+        this.transform.GetComponent<Image>().sprite= snippetController.ReturnBttnImage(myWrapper.responseSmiley);
+        //text.SetText(snippetController.ReturnSmileyStringByEmotion(myWrapper.responseSmiley));
     }
 }

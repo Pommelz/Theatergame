@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI actorText;
 
     public Transform Moodbar;
+    public Transform CurtainAnim;
 
     public Camera cam1;
     public Camera cam2;
@@ -154,7 +155,10 @@ public class UIManager : MonoBehaviour
 
     private void Credits()
     {
+        actorPnl.gameObject.SetActive(false);
+        romeoPnl.gameObject.SetActive(false);
         creditsPnl.gameObject.SetActive(true);
+        //CurtainAnim.GetComponent<Animation>().Play();
     }
 
 }

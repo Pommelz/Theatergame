@@ -358,6 +358,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edea67f08517dd242b529f5d5a55e601, type: 3}
+--- !u!1 &797496136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 659678459243553671, guid: eb4e6582d7f920f43a21bcb8693708f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 659678460116601483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &797496138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797496136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!224 &810862295 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 659678458756882423, guid: eb4e6582d7f920f43a21bcb8693708f7,
@@ -1261,23 +1292,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
-      propertyPath: rhyme.Array.data[0].RomeoText.responsePart
-      value: '"He jests at scars that never felt a wound. /JULIET appears above at
-        a window But, soft! what light through yonder window breaks? /It is the east,
-        and Juliet is the sun. Arise, fair sun, and kill the envious moon, /Who is
-        already sick and pale with grief, That thou her maid art far more fair than
-        she. She speaks yet she says nothing: what of that? Her eye discourses; I
-        will answer it. I am too bold, ''tis not to me she speaks. See, how she leans
-        her cheek upon her hand! O, that I were a glove upon that hand, That I might
-        touch that cheek! "'
+      propertyPath: rhyme.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
-      propertyPath: rhyme.Array.data[4].RomeoText.responsePart
-      value: '"By a name I know not how to tell thee who I am: My name, dear saint,/
-        is hateful to myself, Because it is an enemy to thee; Had I it written, I
-        would tear the word. "'
-      objectReference: {fileID: 0}
+      propertyPath: LoveImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c20997acf64f424b95bcaeff1fd2d13,
+        type: 3}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: SadImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c02ef3e29505b947be88074eeebc8e7,
+        type: 3}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: DramaImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fc0b94b6be605e43bd53438e529a23e,
+        type: 3}
     - target: {fileID: 9019537750013043921, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
       propertyPath: m_Name
@@ -1296,6 +1331,7 @@ GameObject:
   - component: {fileID: 1972462056}
   - component: {fileID: 1972462058}
   - component: {fileID: 1972462057}
+  - component: {fileID: 1972462059}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -1320,7 +1356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1076}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972462057
@@ -1360,6 +1396,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972462055}
   m_CullTransparentMesh: 0
+--- !u!95 &1972462059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972462055}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6066270e574a756499e9ed546b979cb8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1972727602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1614,7 +1669,17 @@ PrefabInstance:
     - target: {fileID: 659678459243553670, guid: eb4e6582d7f920f43a21bcb8693708f7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -93.616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659678459243553670, guid: eb4e6582d7f920f43a21bcb8693708f7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 812.3711
+      objectReference: {fileID: 0}
+    - target: {fileID: 659678459243553670, guid: eb4e6582d7f920f43a21bcb8693708f7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 285.99634
       objectReference: {fileID: 0}
     - target: {fileID: 659678460002924278, guid: eb4e6582d7f920f43a21bcb8693708f7,
         type: 3}
@@ -1631,7 +1696,8 @@ PrefabInstance:
       propertyPath: m_text
       value: blablablablablablablablablablablablablabalbalbalablabalbalbalbalablbalablbalablablabalbalbalablablablablablablablablablablablablablabalbalbalablabalbalbalbalablbalablbalablablabalbalbala
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 659678459243553691, guid: eb4e6582d7f920f43a21bcb8693708f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb4e6582d7f920f43a21bcb8693708f7, type: 3}
 --- !u!1001 &1220272789928778777
 PrefabInstance:
