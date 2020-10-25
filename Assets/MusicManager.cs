@@ -45,9 +45,20 @@ public class MusicManager : MonoBehaviour
         PlayNextSong();
     }
 
+    public IEnumerator RepeatSongList()
+    {
+        while (myPlayer.isPlaying)
+        {
+            yield return null;
+        }
+        PlayNextSong();
+        yield return null;
+    }
+
     public void PlayNextSong()
     {
         StartCoroutine(FadeInMusic(musicClips[songCounter]));
+        StartCoroutine(RepeatSongList());
     }
 
     private IEnumerator FadeInMusic(AudioClip _newClip)
