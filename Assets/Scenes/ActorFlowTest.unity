@@ -1597,6 +1597,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: DramaImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fc0b94b6be605e43bd53438e529a23e,
+        type: 3}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: LoveImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c20997acf64f424b95bcaeff1fd2d13,
+        type: 3}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: SadImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c02ef3e29505b947be88074eeebc8e7,
+        type: 3}
     - target: {fileID: 9019537750013043921, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
       propertyPath: m_Name
