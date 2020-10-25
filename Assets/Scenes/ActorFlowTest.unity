@@ -1599,6 +1599,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
+      propertyPath: rhyme.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
       propertyPath: DramaImg
       value: 
       objectReference: {fileID: 21300000, guid: 5fc0b94b6be605e43bd53438e529a23e,
