@@ -849,6 +849,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: rhyme.Array.data[0].RomeoText.responsePart
+      value: '"He jests at scars that never felt a wound. /JULIET appears above at
+        a window But, soft! what light through yonder window breaks? /It is the east,
+        and Juliet is the sun. Arise, fair sun, and kill the envious moon, /Who is
+        already sick and pale with grief, That thou her maid art far more fair than
+        she. She speaks yet she says nothing: what of that? Her eye discourses; I
+        will answer it. I am too bold, ''tis not to me she speaks. See, how she leans
+        her cheek upon her hand! O, that I were a glove upon that hand, That I might
+        touch that cheek! "'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: rhyme.Array.data[4].RomeoText.responsePart
+      value: '"By a name I know not how to tell thee who I am: My name, dear saint,/
+        is hateful to myself, Because it is an enemy to thee; Had I it written, I
+        would tear the word. "'
+      objectReference: {fileID: 0}
     - target: {fileID: 9019537750013043921, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
       propertyPath: m_Name
