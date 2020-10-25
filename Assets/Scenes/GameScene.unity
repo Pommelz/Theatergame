@@ -1229,6 +1229,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: rhyme.Array.data[0].RomeoText.myClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1952b24265504c845a8e6cd078ad0e02, type: 3}
+    - target: {fileID: 6081370449672916485, guid: db1be6b101d0799409979a5e5e0e9e36,
+        type: 3}
+      propertyPath: rhyme.Array.data[0].julietText.myClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 497a629ef8a6fab4fa0e646b2e5f551c, type: 3}
     - target: {fileID: 9019537750013043921, guid: db1be6b101d0799409979a5e5e0e9e36,
         type: 3}
       propertyPath: m_Name
