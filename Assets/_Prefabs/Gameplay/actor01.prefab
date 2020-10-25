@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3821915504990712055}
-  - component: {fileID: 3821915504990712054}
   - component: {fileID: 6168982973007336019}
+  - component: {fileID: 3271758596928667483}
   m_Layer: 0
   m_Name: actor01
   m_TagString: Untagged
@@ -33,25 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3821915504990712054
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3821915504990712052}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a214f9db754f9124dbef3773593cc870, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6168982973007336019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +47,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRomeo: 0
   stagePos: {fileID: 0}
+--- !u!111 &3271758596928667483
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821915504990712052}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 44181917eb6f21349bf82ad368970c5e, type: 2}
+  - {fileID: 7400000, guid: 1f05cd0b9db3e424e80764e3a811870e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &3821915505731682688
 PrefabInstance:
   m_ObjectHideFlags: 0
