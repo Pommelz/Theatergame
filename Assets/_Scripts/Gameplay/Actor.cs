@@ -52,12 +52,21 @@ public class Actor : MonoBehaviour
             case Collections.Enums.AnimationTag.TALKINGNORMAL:
                 animationID = 5;
                 break;
+            case AnimationTag.CRYING:
+                animationID = 6;
+                break;
+            case AnimationTag.PRAISING:
+                animationID = 7;
+                break;
+            case AnimationTag.WALKING:
+                animationID = 8;
+                break;
         }
 
         anim.SetInteger("animID", animationID);
         anim.SetTrigger("playAnim");
     }
-    
+
     public void StartActorAnimation(AnimationTag animation)
     {
         int animationID = 0;
