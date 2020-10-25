@@ -135,16 +135,16 @@ public class TextSnippetController : MonoBehaviour
         {
             OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
         }
-        
+
         //TODO: spawn snippets on romeo animation event
         StartCoroutine(TalkingDelay(false));
     }
 
     IEnumerator RomeoSplittedText(List<string> _text)
     {
-        for(int i = 0; i< _text.Count; i++)
+        for (int i = 0; i < _text.Count; i++)
         {
-            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip? rhyme[roundCount].RomeoText.myClip.length/_text.Count:4f/_text.Count);
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
             OnSplittedTextOccuredRomeo(_text[i]);
             yield return null;
         }
@@ -226,14 +226,20 @@ public class TextSnippetController : MonoBehaviour
     }
     private IEnumerator TalkingDelay(bool isRomeoDelay)
     {
-        yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length : 4f);
         if (isRomeoDelay)
         {
+            if (chosenText.Count > 0)
+                if (!isPlayback)
+                    yield return new WaitForSeconds(chosenText[chosenText.Count - 1].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
+                else
+                    yield return new WaitForSeconds(chosenText[roundCount].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
+
             RomeoText();
 
         }
         else
         {
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length : 4f);
             if (!isPlayback)
                 SpawnResponseBttns(roundCount);
 
@@ -258,7 +264,7 @@ public class TextSnippetController : MonoBehaviour
             if (wrongAnswerIDs.Contains(i))
                 OnActorSwap?.Invoke();
 
-            yield return new WaitForSeconds(rhyme[i].RomeoText.myClip ? chosenText[i].myClip.length : 4f);
+            yield return new WaitForSeconds(rhyme[i].RomeoText.myClip ? rhyme[i].RomeoText.myClip.length : 4f);
             Debug.Log(chosenText[i].responsePart);
             List<string> splittedText = SplitText(chosenText[i].responsePart);
             if (splittedText.Count == 1)
@@ -278,7 +284,7 @@ public class TextSnippetController : MonoBehaviour
                 }
 
             }
-            yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
+            //yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
             RomeoText();
             roundCount++;
             yield return null;
