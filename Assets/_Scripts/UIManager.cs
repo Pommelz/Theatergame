@@ -10,16 +10,17 @@ public class UIManager : MonoBehaviour
 {
     public Transform romeoPnl;
     public Transform actorPnl;
+    public Transform bckstgRomeoPnl;
 
     private TextMeshProUGUI romeoText;
     private TextMeshProUGUI actorText;
-    
+
     public Transform Moodbar;
-    
+
     public Camera cam1;
     public Camera cam2;
     private bool isReplay = false;
-    
+
     private void OnEnable()
     {
         TextSnippetController.OnRomeoAnimation += SetRomeoText;
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnMoodIncrease += FillMoodbar;
         TextSnippetController.OnSplittedTextOccured += JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo += RomeoTextSplit;
+        TextSnippetController.OnRomeoSkips += RomeoSkips;
     }
 
     private void OnDisable()
@@ -39,6 +41,12 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnMoodIncrease -= FillMoodbar;
         TextSnippetController.OnSplittedTextOccured -= JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo -= RomeoTextSplit;
+        TextSnippetController.OnRomeoSkips -= RomeoSkips;
+    }
+
+    private void RomeoSkips()
+    {
+        bckstgRomeoPnl.gameObject.SetActive(false);
     }
     private void JulietTextSplit(string _text)
     {
@@ -78,7 +86,15 @@ public class UIManager : MonoBehaviour
             romeoPnl.gameObject.SetActive(true);
             romeoText.SetText(_wrapper.responsePart);
         }
+        else
+        {
+            return;
+            //Debug.Log("backstage");
+            //bckstgRomeoPnl.gameObject.SetActive(true);
+            //bckstgRomeoPnl.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(_wrapper.responsePart);
+        }
     }
+
     private void SetJulietText(EmotionAnswerWrapper _wrapper)
     {
         if (isReplay)
@@ -86,6 +102,10 @@ public class UIManager : MonoBehaviour
             romeoPnl.gameObject.SetActive(false);
             actorPnl.gameObject.SetActive(true);
             actorText.SetText(_wrapper.responsePart);
+        }
+        else
+        {
+            bckstgRomeoPnl.gameObject.SetActive(false);
         }
     }
     private void SetJulietText(string _text)
@@ -96,6 +116,10 @@ public class UIManager : MonoBehaviour
             actorPnl.gameObject.SetActive(true);
             actorText.SetText(_text);
         }
+        else
+        {
+            bckstgRomeoPnl.gameObject.SetActive(false);
+        }
     }
     private void SetRomeoText(string _text)
     {
@@ -105,7 +129,14 @@ public class UIManager : MonoBehaviour
             romeoPnl.gameObject.SetActive(true);
             romeoText.SetText(_text);
         }
+        else
+        {
+            Debug.Log("Backstage romeo");
+            bckstgRomeoPnl.gameObject.SetActive(true);
+            bckstgRomeoPnl.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(_text);
+        }
     }
+
     private void FillMoodbar(float _fill)
     {
         Moodbar.GetComponent<Image>().fillAmount += _fill;

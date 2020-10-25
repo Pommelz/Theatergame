@@ -38,6 +38,7 @@ public class TextSnippetController : MonoBehaviour
     public static event SendMessage_EventType OnActorSwap;
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
+    public static event SendMessage_EventType OnRomeoSkips;
 
     public static event PassingJulietResponse_EventType OnActorResponse;
     public static event PassingString_EventType OnSplittedTextOccured;
@@ -124,6 +125,7 @@ public class TextSnippetController : MonoBehaviour
         {
             if (SplitText(text).Count > 1)
             {
+                OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
                 StartCoroutine(RomeoSplittedText(SplitText(text)));
             }
             else
@@ -134,6 +136,7 @@ public class TextSnippetController : MonoBehaviour
         else
         {
             OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
+            StartCoroutine(RomeoSplittedText(SplitText(text)));
         }
 
         //TODO: spawn snippets on romeo animation event
@@ -144,8 +147,8 @@ public class TextSnippetController : MonoBehaviour
     {
         for (int i = 0; i < _text.Count; i++)
         {
-            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
             OnSplittedTextOccuredRomeo(_text[i]);
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
             yield return null;
         }
     }
@@ -187,12 +190,15 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
+
+        //if (isPlayback)
         OnActorResponse?.Invoke(_smileyanswerwrapper);
 
         if (_correctAnswer)
         {
             float increase = 1f / (float)rhyme.Count;
             OnMoodIncrease?.Invoke(increase);
+            CheerHandler.Instance.PlayRandomCheer();
         }
         else
         {
@@ -226,20 +232,46 @@ public class TextSnippetController : MonoBehaviour
     }
     private IEnumerator TalkingDelay(bool isRomeoDelay)
     {
+        bool skipped = false;
         if (isRomeoDelay)
         {
-            if (chosenText.Count > 0)
-                if (!isPlayback)
-                    yield return new WaitForSeconds(chosenText[chosenText.Count - 1].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
-                else
-                    yield return new WaitForSeconds(chosenText[roundCount].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
+            yield return new WaitForSeconds(1.5f);
+            //float delay = 1.5f;
+            ////float delay = 0;
+            ////if (chosenText.Count > 0)
+            ////{
+            ////    if (!isPlayback)
+            ////        delay = chosenText[chosenText.Count - 1].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f;
+            ////    else
+            ////        delay = chosenText[roundCount].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f;
+            ////}
+            //while (delay > 0 && !skipped)
+            //{
+            //    delay -= Time.deltaTime;
+
+            //    //if (Input.GetKeyDown(KeyCode.Return))
+            //    //    skipped = true;
+            //    yield return null;
+            //}
 
             RomeoText();
 
         }
         else
         {
-            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length : 4f);
+            float delay = 0;
+            delay = rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length : 4f;
+            while (delay > 0 && !skipped)
+            {
+                delay -= Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    skipped = true;
+                    OnRomeoSkips?.Invoke();
+                }
+
+                yield return null;
+            }
             if (!isPlayback)
                 SpawnResponseBttns(roundCount);
 

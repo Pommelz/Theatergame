@@ -6,28 +6,42 @@ using UnityEngine;
 public class SynchronizationHandler : MonoBehaviour
 {
     [SerializeField] AudioSource romeo;
-    [SerializeField]private AudioSource julia;
+    [SerializeField] private AudioSource julia;
+    bool isReplay = false;
 
     private void OnEnable()
     {
         TextSnippetController.OnActorResponse += StartJuliaSynchro;
         TextSnippetController.OnRomeoAnimation += StartRomeoSynchro;
+        TextSnippetController.OnReplayStarts += Replaystarts;
+        TextSnippetController.OnRomeoSkips += SkipRomeo;
         ActorManager.OnActorChanged += SetJuliaSource;
     }
+
 
     private void OnDisable()
     {
         TextSnippetController.OnActorResponse -= StartJuliaSynchro;
         TextSnippetController.OnRomeoAnimation -= StartRomeoSynchro;
-        ActorManager.OnActorChanged -= SetJuliaSource;  
+        TextSnippetController.OnReplayStarts -= Replaystarts;
+        TextSnippetController.OnRomeoSkips -= SkipRomeo;
+        ActorManager.OnActorChanged -= SetJuliaSource;
+    }
+
+    private void Replaystarts()
+    {
+        isReplay = true;
     }
 
     private void StartJuliaSynchro(EmotionAnswerWrapper wrapper)
     {
         //if(wrapper.myClip != null)
         //{
+        if (isReplay)
+        {
             julia.clip = wrapper.myClip;
             julia.Play();
+        }
         //}
     }
 
@@ -35,8 +49,8 @@ public class SynchronizationHandler : MonoBehaviour
     {
         //if (romeoanswer.myClip != null)
         //{
-            romeo.clip = romeoanswer.myClip;
-            romeo.Play();
+        romeo.clip = romeoanswer.myClip;
+        romeo.Play();
         //}
     }
 
@@ -45,5 +59,9 @@ public class SynchronizationHandler : MonoBehaviour
         julia = source;
     }
 
+    private void SkipRomeo()
+    {
+        romeo.Stop();
+    }
     // Start is called before the first frame update6
 }
