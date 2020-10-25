@@ -12,6 +12,10 @@ public class TextSnippetController : MonoBehaviour
     public List<AnswerListWrapper> rhyme = new List<AnswerListWrapper>();
     public List<EmotionAnswerWrapper> wrongAnswers = new List<EmotionAnswerWrapper>();
 
+    public Sprite LoveImg;
+    public Sprite SadImg;
+    public Sprite DramaImg;
+
     public Transform SnippetBttn;
     ObjectPool bttnPool;
 
@@ -39,11 +43,13 @@ public class TextSnippetController : MonoBehaviour
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
     public static event SendMessage_EventType OnRomeoSkips;
+    public static event SendMessage_EventType OnPlayBackEnd;
 
     public static event PassingJulietResponse_EventType OnActorResponse;
     public static event PassingString_EventType OnSplittedTextOccured;
     public static event PassingString_EventType OnSplittedTextOccuredRomeo;
 
+    private Coroutine RomeoSplits;
 
 
     void Start()
@@ -102,17 +108,23 @@ public class TextSnippetController : MonoBehaviour
             {
                 ts.isRhyme = true;
                 ts.myWrapper = julietResponse;
-                bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(julietResponse.responseSmiley));
+                bttn.transform.GetComponent<Image>().sprite = ReturnBttnImage(ts.myWrapper.responseSmiley);
+                //bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(julietResponse.responseSmiley));
             }
             else
             {
                 ts.isRhyme = false;
-                bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(answers[0].responseSmiley));
 
                 ts.myWrapper = answers[0];
+                //bttn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(ReturnSmileyStringByEmotion(answers[0].responseSmiley));
+                bttn.transform.GetComponent<Image>().sprite = ReturnBttnImage(ts.myWrapper.responseSmiley);
+                wrongAnswers.Remove(answers[0]);
                 answers.Remove(answers[0]);
 
             }
+            bttn.transform.GetComponent<Image>().SetNativeSize();
+            //if()
+            //bttn.GetComponent<RectTransform>().localScale *= 1 / 2;
         }
         roundCount++;
     }
@@ -126,7 +138,7 @@ public class TextSnippetController : MonoBehaviour
             if (SplitText(text).Count > 1)
             {
                 OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
-                StartCoroutine(RomeoSplittedText(SplitText(text)));
+                RomeoSplits = StartCoroutine(RomeoSplittedText(SplitText(text)));
             }
             else
             {
@@ -136,7 +148,7 @@ public class TextSnippetController : MonoBehaviour
         else
         {
             OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
-            StartCoroutine(RomeoSplittedText(SplitText(text)));
+            RomeoSplits = StartCoroutine(RomeoSplittedText(SplitText(text)));
         }
 
         //TODO: spawn snippets on romeo animation event
@@ -148,9 +160,9 @@ public class TextSnippetController : MonoBehaviour
         for (int i = 0; i < _text.Count; i++)
         {
             OnSplittedTextOccuredRomeo(_text[i]);
-            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
-            yield return null;
+            yield return new WaitForSeconds(7f);/*rhyme[roundCount].RomeoText.myClip ? (rhyme[roundCount].RomeoText.myClip.length / (float)_text.Count) : 4f /(float) _text.Count*/
         }
+        yield return null;
     }
 
     public string ReturnSmileyStringByEmotion(Smiley _emotion)
@@ -166,6 +178,23 @@ public class TextSnippetController : MonoBehaviour
                 break;
             case Smiley.DRAMA:
                 smileystring = ":P";
+                break;
+        }
+        return smileystring;
+    }
+    public Sprite ReturnBttnImage(Smiley _emotion)
+    {
+        Sprite smileystring = null;
+        switch (_emotion)
+        {
+            case Smiley.LOVE:
+                smileystring = LoveImg;
+                break;
+            case Smiley.SAD:
+                smileystring = SadImg;
+                break;
+            case Smiley.DRAMA:
+                smileystring = DramaImg;
                 break;
         }
         return smileystring;
@@ -266,12 +295,19 @@ public class TextSnippetController : MonoBehaviour
                 delay -= Time.deltaTime;
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    skipped = true;
                     OnRomeoSkips?.Invoke();
+                    if (RomeoSplits != null)
+                        StopCoroutine(RomeoSplits);
+                    skipped = true;
                 }
 
                 yield return null;
             }
+            if (RomeoSplits != null)
+                StopCoroutine(RomeoSplits);
+
+            OnRomeoSkips?.Invoke();
+
             if (!isPlayback)
                 SpawnResponseBttns(roundCount);
 
@@ -307,18 +343,27 @@ public class TextSnippetController : MonoBehaviour
             }
             else
             {
+                //float delay = 
                 for (int j = 0; j < splittedText.Count; j++)
                 {
+                    yield return new WaitForSeconds(chosenText[i].myClip ? (chosenText[i].myClip.length / (float)splittedText.Count) : 4f / (float)splittedText.Count);
                     OnResponseEmotion(chosenText[i].animation);
                     OnSplittedTextOccured?.Invoke(splittedText[j]);
-                    yield return new WaitForSeconds(chosenText[i].myClip ? (chosenText[i].myClip.length) / splittedText.Count : 4f / splittedText.Count);
                     //List<string> sentences = splittedText.OfType<string>().ToList();
                 }
 
             }
             //yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
-            RomeoText();
             roundCount++;
+            if (roundCount < rhyme.Count)
+            {
+                RomeoText();
+            }
+            else
+            {
+                Debug.Log("end");
+                OnPlayBackEnd?.Invoke();
+            }
             yield return null;
         }
         yield return null;

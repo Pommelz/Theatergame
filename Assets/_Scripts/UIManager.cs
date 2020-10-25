@@ -12,10 +12,13 @@ public class UIManager : MonoBehaviour
     public Transform actorPnl;
     public Transform bckstgRomeoPnl;
 
+    public Transform creditsPnl;
+
     private TextMeshProUGUI romeoText;
     private TextMeshProUGUI actorText;
 
     public Transform Moodbar;
+    public Transform CurtainAnim;
 
     public Camera cam1;
     public Camera cam2;
@@ -30,6 +33,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnSplittedTextOccured += JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo += RomeoTextSplit;
         TextSnippetController.OnRomeoSkips += RomeoSkips;
+        TextSnippetController.OnPlayBackEnd += Credits;
     }
 
     private void OnDisable()
@@ -42,6 +46,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnSplittedTextOccured -= JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo -= RomeoTextSplit;
         TextSnippetController.OnRomeoSkips -= RomeoSkips;
+        TextSnippetController.OnPlayBackEnd -= Credits;
     }
 
     private void RomeoSkips()
@@ -67,15 +72,6 @@ public class UIManager : MonoBehaviour
     {
         romeoText = romeoPnl.GetChild(1).GetComponent<TextMeshProUGUI>();
         actorText = actorPnl.GetChild(1).GetComponent<TextMeshProUGUI>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchCamera();
-        }
     }
 
     private void SetRomeoText(AnimationAnswerWrapper _wrapper)
@@ -146,6 +142,14 @@ public class UIManager : MonoBehaviour
     {
         cam1.enabled = !cam1.enabled;
         cam2.enabled = !cam2.enabled;
+    }
+
+    private void Credits()
+    {
+        actorPnl.gameObject.SetActive(false);
+        romeoPnl.gameObject.SetActive(false);
+        creditsPnl.gameObject.SetActive(true);
+        //CurtainAnim.GetComponent<Animation>().Play();
     }
 
 }
