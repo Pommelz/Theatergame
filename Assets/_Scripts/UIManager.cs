@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnReplayStarts += StartReplay;
         TextSnippetController.OnActorResponse += SetJulietText;
         TextSnippetController.OnMoodIncrease += FillMoodbar;
+        TextSnippetController.OnSplittedTextOccured += ActorTextSplit;
     }
 
     private void OnDisable()
@@ -35,6 +36,11 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnReplayStarts -= StartReplay;
         TextSnippetController.OnActorResponse -= SetJulietText;
         TextSnippetController.OnMoodIncrease -= FillMoodbar;
+        TextSnippetController.OnSplittedTextOccured -= ActorTextSplit;
+    }
+    private void ActorTextSplit(string _text)
+    {
+        SetJulietText(_text);
     }
 
     private void StartReplay()
@@ -45,8 +51,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        romeoText = romeoPnl.GetChild(0).GetComponent<TextMeshProUGUI>();
-        actorText = actorPnl.GetChild(0).GetComponent<TextMeshProUGUI>();
+        romeoText = romeoPnl.GetChild(1).GetComponent<TextMeshProUGUI>();
+        actorText = actorPnl.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -76,10 +82,20 @@ public class UIManager : MonoBehaviour
             actorText.SetText(_wrapper.responsePart);
         }
     }
+    private void SetJulietText(string _text)
+    {
+        if (isReplay)
+        {
+            romeoPnl.gameObject.SetActive(false);
+            actorPnl.gameObject.SetActive(true);
+            actorText.SetText(_text);
+        }
+    }
     private void FillMoodbar(float _fill)
     {
         Moodbar.GetComponent<Image>().fillAmount += _fill;
     }
+
     private void SwitchCamera()
     {
         cam1.enabled = !cam1.enabled;

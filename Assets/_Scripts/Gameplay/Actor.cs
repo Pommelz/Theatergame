@@ -7,7 +7,7 @@ using Collections.Enums;
 public class Actor : MonoBehaviour
 {
     Animator anim;
-    Animator movementAnim;
+    Animation movementAnim;
 
     public bool isRomeo;
 
@@ -16,7 +16,7 @@ public class Actor : MonoBehaviour
     private void Awake()
     {
         anim = isRomeo ? GetComponent<Animator>() : transform.GetChild(0).GetComponent<Animator>();
-        movementAnim = !isRomeo ? GetComponent<Animator>() : null;
+        movementAnim = !isRomeo ? GetComponent<Animation>() : null;
     }
 
     private void OnEnable()
@@ -87,23 +87,24 @@ public class Actor : MonoBehaviour
 
     public void MoveToStage()
     {
-        movementAnim.enabled = true;
-        movementAnim.SetTrigger("move");
+        //movementAnim.enabled = true;
+        movementAnim.Play("actorMovesToStage");
         Debug.Log("moveToStage");
         //TODO play walking animation here
     }
 
     public void AnimSetPosition()
     {
-        movementAnim.enabled = false;
+        //movementAnim.enabled = false;
         this.transform.position = stagePos.position;
 
         //Play text animation
     }
     public void MoveBack()
     {
-        movementAnim.enabled = true;
+        //movementAnim.enabled = true;
         Debug.Log("moveBack");
-        movementAnim.SetTrigger("moveback");
+        movementAnim.Play("MoveBack");
+        //movementAnim.clip.
     }
 }

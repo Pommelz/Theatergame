@@ -5,6 +5,7 @@ using Collections.ListWrapping;
 using UnityEngine.UI;
 using TMPro;
 using Collections.Enums;
+using System.Linq;
 
 public class TextSnippetController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class TextSnippetController : MonoBehaviour
 
     private int roundCount = 0;
     private int wrongInputs = 0;
+
+    private int maxChars = 186;
+    string[] separatingStrings = { "/", "..." };
     private bool isPlayback = false;
 
     public delegate void SendMessage_EventType();
@@ -27,6 +31,7 @@ public class TextSnippetController : MonoBehaviour
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
     public delegate void PassingAnimationTag_EventType(AnimationTag emotion);
     public delegate void PassingJulietResponse_EventType(EmotionAnswerWrapper wrapper);
+    public delegate void PassingString_EventType(string _text);
 
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
     public static event PassingFloat_EventType OnMoodIncrease;
@@ -35,7 +40,7 @@ public class TextSnippetController : MonoBehaviour
     public static event SendMessage_EventType OnReplayStarts;
 
     public static event PassingJulietResponse_EventType OnActorResponse;
-
+    public static event PassingString_EventType OnSplittedTextOccured;
 
 
 
@@ -226,13 +231,39 @@ public class TextSnippetController : MonoBehaviour
 
             yield return new WaitForSeconds(rhyme[i].RomeoText.myClip ? chosenText[i].myClip.length : 4f);
             Debug.Log(chosenText[i].responsePart);
-            OnResponseEmotion(chosenText[i].animation);
-            OnActorResponse?.Invoke(chosenText[i]);
+            List<string> splittedText = SplitText(chosenText[i].responsePart);
+            if (splittedText.Count == 1)
+            {
+                OnResponseEmotion(chosenText[i].animation);
+                OnActorResponse?.Invoke(chosenText[i]);
+                yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
+            }
+            else
+            {
+                for (int j = 0; j < splittedText.Count; j++)
+                {
+                    OnResponseEmotion(chosenText[i].animation);
+                    OnSplittedTextOccured?.Invoke(splittedText[j]);
+                    yield return new WaitForSeconds(chosenText[i].myClip ? (chosenText[i].myClip.length) / splittedText.Count : 4f / splittedText.Count);
+                    //List<string> sentences = splittedText.OfType<string>().ToList();
+                }
+
+            }
             yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
             RomeoText();
             roundCount++;
             yield return null;
         }
         yield return null;
+    }
+    private List<string> SplitText(string _text)
+    {
+        List<string> splitted = new List<string>();
+        splitted = _text.Split('/').ToList();
+        //if (_text.Length > maxChars)
+        //{
+        //    splitted = (_text.Split(separatingStrings, System.StringSplitOptions.None));
+        //}
+        return splitted;
     }
 }

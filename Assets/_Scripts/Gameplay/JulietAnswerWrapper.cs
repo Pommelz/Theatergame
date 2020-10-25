@@ -16,6 +16,7 @@ public class EmotionAnswerWrapper
 public class AnimationAnswerWrapper
 {
     public string responsePart;
+
     public AnimationTag animation;
     public AudioClip myClip;
 }
