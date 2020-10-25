@@ -46,6 +46,7 @@ public class ActorManager : MonoBehaviour
             actors[actorID].MoveToStage();
         }
         OnActorChanged?.Invoke(actors[actorID].transform.GetChild(0).GetComponent<AudioSource>()); ;
+        SFXManager.Instance.PlayBellClick();
         actorID++;
         //if (actorID == actors.Count)
         //{

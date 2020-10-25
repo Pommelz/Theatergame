@@ -124,6 +124,7 @@ public class TextSnippetController : MonoBehaviour
         {
             if (SplitText(text).Count > 1)
             {
+                OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
                 StartCoroutine(RomeoSplittedText(SplitText(text)));
             }
             else
@@ -134,6 +135,7 @@ public class TextSnippetController : MonoBehaviour
         else
         {
             OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
+            StartCoroutine(RomeoSplittedText(SplitText(text)));
         }
 
         //TODO: spawn snippets on romeo animation event
@@ -144,8 +146,8 @@ public class TextSnippetController : MonoBehaviour
     {
         for (int i = 0; i < _text.Count; i++)
         {
-            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
             OnSplittedTextOccuredRomeo(_text[i]);
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length / _text.Count : 4f / _text.Count);
             yield return null;
         }
     }
@@ -187,12 +189,15 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
+
+        //if (isPlayback)
         OnActorResponse?.Invoke(_smileyanswerwrapper);
 
         if (_correctAnswer)
         {
             float increase = 1f / (float)rhyme.Count;
             OnMoodIncrease?.Invoke(increase);
+            CheerHandler.Instance.PlayRandomCheer();
         }
         else
         {
@@ -230,7 +235,7 @@ public class TextSnippetController : MonoBehaviour
         {
             if (chosenText.Count > 0)
                 if (!isPlayback)
-                    yield return new WaitForSeconds(chosenText[chosenText.Count - 1].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
+                    yield return new WaitForSeconds(/*chosenText[chosenText.Count - 1].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f*/1f);
                 else
                     yield return new WaitForSeconds(chosenText[roundCount].myClip ? chosenText[chosenText.Count - 1].myClip.length : 4f);
 
