@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CheerVariants: []
+  volumeSetup: 0.6
+  multiplier: 0.02
+  fade: 0
+  alph: 0

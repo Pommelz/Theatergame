@@ -50,12 +50,10 @@ public class HealthLightHandler : MonoBehaviour
         startColor = healthLights[0].color;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) TakeDamage();
-    }
-
-
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space)) TakeDamage();
+    //}
 
     public void ResetDamage()
     {
