@@ -49,7 +49,11 @@ public class SFXManager : MonoBehaviour
     {
         promptSound.Play();
     }
-    public void PlayBellClick()
+    public void PlayWrong()
+    {
+        wrongAnswerSound.Play();
+    }
+    public void PlayBell()
     {
         bellSound.Play();
     }
