@@ -26,12 +26,15 @@ public class TextSnippetController : MonoBehaviour
     public delegate void PassingFloat_EventType(float _float);
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
     public delegate void PassingAnimationTag_EventType(AnimationTag emotion);
+    public delegate void PassingJulietResponse_EventType(EmotionAnswerWrapper wrapper);
 
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
     public static event PassingFloat_EventType OnMoodIncrease;
     public static event SendMessage_EventType OnActorSwap;
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
+
+    public static event PassingJulietResponse_EventType OnActorResponse;
 
 
 
@@ -153,6 +156,8 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
+        OnActorResponse?.Invoke(_smileyanswerwrapper);
+
         if (_correctAnswer)
         {
             float increase = 1f / (float)rhyme.Count;
@@ -160,9 +165,10 @@ public class TextSnippetController : MonoBehaviour
         }
         else
         {
+            HealthLightHandler.Instance.TakeDamage();
             wrongInputs++;
             wrongAnswerIDs.Add(roundCount);
-            if (wrongInputs == 1)
+            if (wrongInputs == 3)
             {
                 OnActorSwap?.Invoke();
                 wrongInputs = 0;
@@ -183,13 +189,9 @@ public class TextSnippetController : MonoBehaviour
         {
             Debug.Log("end");
             isPlayback = true;
-            //foreach (EmotionAnswerWrapper s in chosenText)
-            //{
-            //    Debug.Log("results: " + s.responsePart);
-            //}
-            //TheaterPlayback();
+            OnActorSwap?.Invoke();
+            TheaterPlayback();
         }
-        //RomeoText();
     }
     private IEnumerator TalkingDelay(bool isRomeoDelay)
     {
@@ -215,14 +217,20 @@ public class TextSnippetController : MonoBehaviour
     {
         roundCount = 0;
         RomeoText();
+        roundCount++;
+
         for (int i = 0; i < chosenText.Count; i++)
         {
             if (wrongAnswerIDs.Contains(i))
-            {
                 OnActorSwap?.Invoke();
-            }
-            yield return new WaitForSeconds(3f);
+
+            yield return new WaitForSeconds(rhyme[i].RomeoText.myClip ? chosenText[i].myClip.length : 4f);
             Debug.Log(chosenText[i].responsePart);
+            OnResponseEmotion(chosenText[i].animation);
+            OnActorResponse?.Invoke(chosenText[i]);
+            yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
+            RomeoText();
+            roundCount++;
             yield return null;
         }
         yield return null;
