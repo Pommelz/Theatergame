@@ -39,6 +39,11 @@ public class SFXManager : MonoBehaviour
 
     // Start is called before the first frame update
 
+    private void Start()
+    {
+        ActorManager.OnActorChanged += PlayBellClick;
+    }
+
     public void PlayButtonClick()
     {
         btnSound.Play();
@@ -47,7 +52,7 @@ public class SFXManager : MonoBehaviour
     {
         promptSound.Play();
     }
-    public void PlayBellClick()
+    public void PlayBellClick(AudioSource _myClip)
     {
         bellSound.Play();
     }

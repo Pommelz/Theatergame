@@ -45,15 +45,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rhyme:
   - RomeoText:
-      responsePart: '"He jests at scars that never felt a wound. JULIET appears above
-        at a window But, soft! what light through yonder window breaks? It is the
+      responsePart: 'He jests at scars that never felt a wound. JULIET appears above
+        at a window But, soft! what light through yonder window breaks?/It is the
         east, and Juliet is the sun. Arise, fair sun, and kill the envious moon,
         Who is already sick and pale with grief, That thou her maid art far more
-        fair than she. She speaks yet she says nothing: what of that? Her eye discourses;
-        I will answer it. I am too bold, ''tis not to me she speaks. See, how she
-        leans her cheek upon her hand! O, that I were a glove upon that hand, That
-        I might touch that cheek! "'
-      animation: 0
+        fair than she./She speaks yet she says nothing: what of that? Her eye discourses;
+        I will answer it. I am too bold, ''tis not to me she speaks./See, how she
+        leans her cheek upon her hand! O, that I were a glove upon that hand,/That
+        I might touch that cheek!'
+      animation: 2
       myClip: {fileID: 8300000, guid: 1952b24265504c845a8e6cd078ad0e02, type: 3}
     julietText:
       responsePart: Ay me!
@@ -61,12 +61,12 @@ MonoBehaviour:
       animation: 1
       myClip: {fileID: 8300000, guid: 497a629ef8a6fab4fa0e646b2e5f551c, type: 3}
   - RomeoText:
-      responsePart: '"She speaks: O, speak again, bright angel!  "'
+      responsePart: 'She speaks: O, speak again, bright angel!'
       animation: 2
       myClip: {fileID: 8300000, guid: d95483125fe98244f8c2c1c49a49940d, type: 3}
     julietText:
       responsePart: '"O Romeo, Romeo! wherefore art thou Romeo? Deny thy father and
-        refuse thy name; Or, if thou wilt not, be but sworn my love, And I''ll no
+        refuse thy name;/Or, if thou wilt not, be but sworn my love, And I''ll no
         longer be a Capulet. "'
       responseSmiley: 2
       animation: 2
@@ -77,11 +77,10 @@ MonoBehaviour:
       myClip: {fileID: 8300000, guid: 273865f1439ee6f4d986f6a285e8afda, type: 3}
     julietText:
       responsePart: '"Tis but thy name that is my enemy; Thou art thyself, though
-        not a Montague. What''s Montague? What''s in a name?  that which we call
-        a rose. By any other name would smell as sweet; So Romeo would, were he not
-        Romeo call''d, Retain that dear perfection which he owes Without that title.
-        Romeo, doff thy name, And for that name which is no part of thee Take all
-        myself. "'
+        not a Montague./What''s Montague? What''s in a name?  that which we call
+        a rose./By any other name would smell as sweet; So Romeo would, were he not
+        Romeo call''d, Retain that dear perfection which he owes Without that title./Romeo,
+        doff thy name, And for that name which is no part of thee Take all myself."'
       responseSmiley: 2
       animation: 0
       myClip: {fileID: 8300000, guid: 52fb232928637614a9393da08ff31adf, type: 3}
@@ -115,39 +114,39 @@ MonoBehaviour:
     julietText:
       responsePart: The orchard walls are high and hard to climb.
       responseSmiley: 0
-      animation: 0
+      animation: 1
       myClip: {fileID: 8300000, guid: f59283ef175f71e41aa123a1f7f42396, type: 3}
   - RomeoText:
       responsePart: '"With love''s light wings did I o''er-perch these walls; For
         stony limits cannot hold love out, And what love can do that dares love attempt;
         Therefore thy kinsmen are no let to me. "'
-      animation: 0
+      animation: 2
       myClip: {fileID: 8300000, guid: 31aaaa6cb4d909a46bedc99b98d09837, type: 3}
     julietText:
       responsePart: If they do see thee, they will murder thee.
       responseSmiley: 1
-      animation: 0
+      animation: 3
       myClip: {fileID: 8300000, guid: d07c6688283ffda45b8271dcaf36b86c, type: 3}
   - RomeoText:
       responsePart: '"Alack, there lies more peril in thine eye Than twenty of their
         swords: look thou but sweet, And I am proof against their enmity. "'
-      animation: 0
+      animation: 4
       myClip: {fileID: 8300000, guid: 12e5695551ba3e64189bf9d59bc2dc78, type: 3}
     julietText:
       responsePart: I would not for the world they saw thee here.
       responseSmiley: 0
-      animation: 0
+      animation: 2
       myClip: {fileID: 8300000, guid: be2c0c425f39aad45be7c5b83ea75c7a, type: 3}
   - RomeoText:
       responsePart: '"I have night''s cloak to hide me from their sight; And but
         thou love me, let them find me here: My life were better ended by their hate,
         Than death prorogued, wanting of thy love. "'
-      animation: 0
+      animation: 6
       myClip: {fileID: 8300000, guid: dacb7e511c4229344970614312442eb1, type: 3}
     julietText:
       responsePart: By whose direction found'st thou out this place?
       responseSmiley: 1
-      animation: 0
+      animation: 2
       myClip: {fileID: 8300000, guid: efd34fef461c44d4bbdd1bcb74099b9d, type: 3}
   - RomeoText:
       responsePart: '"By love, who first did prompt me to inquire; He lent me counsel
@@ -157,52 +156,152 @@ MonoBehaviour:
       myClip: {fileID: 8300000, guid: 212dbe03dc91949459084ca70bc28771, type: 3}
     julietText:
       responsePart: '"Thou know''st the mask of night is on my face, Else would a
-        maiden blush bepaint my cheek For that which thou hast heard me speak to-night
-        Fain would I dwell on form, fain, fain deny What I have spoke: but farewell
-        compliment! Dost thou love me? "'
+        maiden blush bepaint my cheek./For that which thou hast heard me speak to-night
+        Fain would I dwell on form, fain, fain deny./What I have spoke: but farewell
+        compliment! Dost thou love me?"'
       responseSmiley: 0
       animation: 0
       myClip: {fileID: 8300000, guid: d0501cfecbe49ce429d3538b5b8b714f, type: 3}
   wrongAnswers:
-  - responsePart: "bl\xF6\xF6\xF6\xF6\xF6\xF6h"
+  - responsePart: What good is happiness if nobody shares it with us? A 'lonely'
+      happiness is a heavy burden.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: 725a38f83cc81cb47bbb0861345c3164, type: 3}
+  - responsePart: The tears dissolve and quench the pain.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: b9c38949c3f8ec34588399e72da9a208, type: 3}
+  - responsePart: Our experience is composed more of lost illusions than of gained
+      insights.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: 5bd55b8eedddc764497972511efa8575, type: 3}
+  - responsePart: All worldly things are but a dream in spring. Think of death as
+      coming home.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: cf68c65e09b3a6d4a860d571b657ef04, type: 3}
+  - responsePart: Without suffering no character is formed.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: 7d7471bce2c933e48846653c25e15c0e, type: 3}
+  - responsePart: Only the related pain brings tears to our eyes, and everyone actually
+      cries for themselves.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: c559c5a8935efdc468d6fdb50e0368c1, type: 3}
+  - responsePart: Those who seek only praise in tears are not really grieving. Real
+      pain grieves when no one sees it.
     responseSmiley: 1
     animation: 0
-    myClip: {fileID: 0}
-  - responsePart: bllliiiiiiiiiiiiiiiiiiiiiiiii
-    responseSmiley: 2
+    myClip: {fileID: 8300000, guid: db6b36129b6ff064783f0570a460e014, type: 3}
+  - responsePart: There is much sadness in the world and much beauty. Sometimes the
+      sad seems to have more violence than one can bear, but then the beautiful quietly
+      strengthens and touches our soul again.
+    responseSmiley: 1
+    animation: 5
+    myClip: {fileID: 8300000, guid: 24e7b8fcf5776f743ba65fdaa9a0ff7c, type: 3}
+  - responsePart: The true man is always sad; his joys are lightning in the night.
+    responseSmiley: 1
+    animation: 2
+    myClip: {fileID: 8300000, guid: 2faee2fc0e2945947905095946e917ff, type: 3}
+  - responsePart: Death is a rest from toil and misery.
+    responseSmiley: 1
     animation: 0
-    myClip: {fileID: 0}
-  - responsePart: aaaaaaaaaaaaaaaaa
+    myClip: {fileID: 8300000, guid: 2755e6f4c1dfe81488d41d0a7d0136da, type: 3}
+  - responsePart: I love these moments. I like to wave at them as they pass by.
     responseSmiley: 0
     animation: 0
-    myClip: {fileID: 0}
-  - responsePart: hhhhhhhhhhhhhhh
-    responseSmiley: 1
-    animation: 0
-    myClip: {fileID: 0}
-  - responsePart: kkkkkkkkkkkkkkkk
-    responseSmiley: 2
-    animation: 0
-    myClip: {fileID: 0}
-  - responsePart: UUUUUUU
-    responseSmiley: 1
-    animation: 0
-    myClip: {fileID: 0}
-  - responsePart: LLLLLLLLLLL
-    responseSmiley: 2
-    animation: 0
-    myClip: {fileID: 0}
-  - responsePart: BBBBBBBBBB
+    myClip: {fileID: 8300000, guid: 654f9374a083dce42a854ac9b9e92be1, type: 3}
+  - responsePart: I believe this is the beginning of a wonderful friendship.
     responseSmiley: 0
     animation: 0
-    myClip: {fileID: 0}
-  - responsePart: "\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6\xD6"
-    responseSmiley: 1
+    myClip: {fileID: 8300000, guid: d7cbd297b792a9041b67fb987761ac0e, type: 3}
+  - responsePart: 'A wise man does not contradict his wife. He waits until she does
+      it herself. '
+    responseSmiley: 0
     animation: 0
-    myClip: {fileID: 0}
-  - responsePart: PPPPPPPPPPPPPP
+    myClip: {fileID: 8300000, guid: 573be32e0b3985247ab1d4b7a97cf087, type: 3}
+  - responsePart: Love is passion, devotion - someone you cannot live without./Find
+      someone you are crazy about and who loves you as much as you love him. How
+      do you find someone like that? Forget the mind and just listen to your heart.
+    responseSmiley: 0
+    animation: 0
+    myClip: {fileID: 8300000, guid: 41ccfc57054022a478e9064665c04f92, type: 3}
+  - responsePart: 'Newly in love people are nervous and tender. But they break everything
+      in two, because the heart is an organ of fire '
+    responseSmiley: 0
+    animation: 0
+    myClip: {fileID: 8300000, guid: 84ea6643d6c666b45a6c70a5facab93e, type: 3}
+  - responsePart: Darling, I'm waiting for you. How long is a day in the dark...
+      or a week.
+    responseSmiley: 0
+    animation: 0
+    myClip: {fileID: 8300000, guid: f987c97d8727d574eb4fb975232e90da, type: 3}
+  - responsePart: Fasten your seat belts, ladies and gentlemen! I think it's going
+      to be a stormy night.
+    responseSmiley: 0
+    animation: 0
+    myClip: {fileID: 8300000, guid: 9fba1920f3186c944a429bf412ce8e36, type: 3}
+  - responsePart: I would like to have a still water - one that does not cause stress.
+    responseSmiley: 0
+    animation: 0
+    myClip: {fileID: 8300000, guid: 26eaf0cb9ab4459429e7e271c9bd0a5e, type: 3}
+  - responsePart: It does not matter how long you wait, but for whom.
+    responseSmiley: 0
+    animation: 2
+    myClip: {fileID: 8300000, guid: 669f78894a6af72459c7830de9b7057c, type: 3}
+  - responsePart: Knowing it is the easy part; saying it out loud is the difficult
+      part.
+    responseSmiley: 0
+    animation: 1
+    myClip: {fileID: 8300000, guid: b391f8ac38172e54d8aa0c831f84f1f4, type: 3}
+  - responsePart: The path of the righteous is lined on both sides with the outrages
+      of the selfish and the tyranny of evil men.
     responseSmiley: 2
     animation: 0
-    myClip: {fileID: 0}
+    myClip: {fileID: 8300000, guid: 4c88d02cc2008e043ba47a118e45b4c0, type: 3}
+  - responsePart: Mad people do not explode when sunlight hits them, no matter how
+      crazy they are!
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: c89785698a51085418ae68d4bee11aed, type: 3}
+  - responsePart: You know, gravity is like madness. Sometimes even a light nudge
+      is enough!?
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: 904b62dd2d771014183c01b36e98a7bd, type: 3}
+  - responsePart: Do I look like someone who has a plan?
+    responseSmiley: 2
+    animation: 5
+    myClip: {fileID: 8300000, guid: 0ba27ebe12774994790ea472dadca571, type: 3}
+  - responsePart: When you get involved with the devil, the devil does not change
+      ... the devil changes you.
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: cde5967a17870df41b7803496bff3d01, type: 3}
+  - responsePart: I have the courage to die. But I ask you, do you have the courage
+      to live.
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: b7e6e2ee300332e4ca8d4483f32bac77, type: 3}
+  - responsePart: 'Never forget: From great power follows great responsibility!'
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: 5be3119b8a603304d84d0d9ff83a5248, type: 3}
+  - responsePart: I must have missed the fact that this is my problem!
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: 8bedb43388a273f4ab12116abac10ccd, type: 3}
+  - responsePart: Decisions make us who we are. And we always have the choice to
+      do the right thing.
+    responseSmiley: 2
+    animation: 2
+    myClip: {fileID: 8300000, guid: 74440b435889c74489c65383186c494b, type: 3}
+  - responsePart: Your friends have a high mortality rate.
+    responseSmiley: 2
+    animation: 4
+    myClip: {fileID: 8300000, guid: b8f3d44f40105f643a6f443016b0e3b0, type: 3}
   SnippetBttn: {fileID: 1497986158983820992, guid: 151140991f53944439563510d980bfec,
     type: 3}
