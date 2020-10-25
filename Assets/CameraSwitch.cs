@@ -49,12 +49,6 @@ public class CameraSwitch : MonoBehaviour
         activeCamera = Camera.main;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) ToggleCamera();
-    }
-
     public void ToggleCamera()
     {
         if(activeCamera == availableCameras[0])
