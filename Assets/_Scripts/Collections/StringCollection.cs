@@ -11,7 +11,7 @@ public static class StringCollection
     public const string SNIPPETCONTROLLER_SO = "TextSnippetManager";
 
 
-    public const string GAME_SCENE = "GameScene";
+    public const string GAME_SCENE = "ActorFlowTest";
     public const string MAINMENU_SCENE = "MainMenu";
 
 }
