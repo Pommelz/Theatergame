@@ -37,6 +37,8 @@ public class CheerHandler : MonoBehaviour
 
     [SerializeField] private AudioClip[] CheerVariants;
     private AudioSource[] audios;
+    public float volumeSetup = 0.6f;
+    public float multiplier = 0.02f;
 
     private void Start()
     {
@@ -56,13 +58,20 @@ public class CheerHandler : MonoBehaviour
         float temp = myPlayer.volume;
         while (myPlayer.volume >= 0.01)
         {
-            myPlayer.volume -= 0.05f;
+            myPlayer.volume -= multiplier * Time.deltaTime;
             yield return null;
         }
         myPlayer.Stop();
         myPlayer.volume = temp;
         yield return null;
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space)) PlayRandomCheer();
+    //}
+
+
 
     public void PlayRandomCheer()
     {
@@ -76,6 +85,7 @@ public class CheerHandler : MonoBehaviour
         for (int i = 0; i < audios.Length; i++)
         {
             audios[i] = this.gameObject.AddComponent<AudioSource>();
+            audios[i].volume = volumeSetup;
         }
     }
 
@@ -83,8 +93,9 @@ public class CheerHandler : MonoBehaviour
     {
         if (!audios[0].isPlaying)
         {
-            if (audios[0].clip != audios[0].clip) audios[0].clip = myClip;
+            if (audios[0].clip != myClip) audios[0].clip = myClip;
             audios[0].Play();
+            StartCoroutine(FadeAudio(audios[0]));
         }
         else if (audios[0].isPlaying && !audios[1].isPlaying)
         {
