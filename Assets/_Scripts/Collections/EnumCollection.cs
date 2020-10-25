@@ -18,5 +18,8 @@ namespace Collections.Enums
         DRAMA,
         LOOKINGFORLINES,
         TALKINGNORMAL,
+        CRYING,
+        PRAISING,
+        WALKING,
     }
 }
