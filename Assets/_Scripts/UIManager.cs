@@ -152,4 +152,9 @@ public class UIManager : MonoBehaviour
         //CurtainAnim.GetComponent<Animation>().Play();
     }
 
+    public void BackToMainMenu()
+    {
+        SceneController.Instance.LoadScene(StringCollection.MAINMENU_SCENE);
+    }
+
 }
