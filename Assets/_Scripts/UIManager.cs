@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnMoodIncrease += FillMoodbar;
         TextSnippetController.OnSplittedTextOccured += JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo += RomeoTextSplit;
+        TextSnippetController.OnRomeoSkips += RomeoSkips;
     }
 
     private void OnDisable()
@@ -40,6 +41,12 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnMoodIncrease -= FillMoodbar;
         TextSnippetController.OnSplittedTextOccured -= JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo -= RomeoTextSplit;
+        TextSnippetController.OnRomeoSkips -= RomeoSkips;
+    }
+
+    private void RomeoSkips()
+    {
+        bckstgRomeoPnl.gameObject.SetActive(false);
     }
     private void JulietTextSplit(string _text)
     {
