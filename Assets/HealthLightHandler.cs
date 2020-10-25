@@ -89,6 +89,7 @@ public class HealthLightHandler : MonoBehaviour
         {
 
             healthLights[damage].color = Color.red;
+            SFXManager.Instance.PlayWrong();
             StartCoroutine(Glow(healthLights[damage]));
             damage++;
 
