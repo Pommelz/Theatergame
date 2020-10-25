@@ -36,13 +36,10 @@ public class SFXManager : MonoBehaviour
     [SerializeField] AudioSource promptSound;
     [SerializeField] AudioSource bellSound;
     [SerializeField] AudioSource footstepSound;
+    [SerializeField] AudioSource wrongAnswerSound;
 
     // Start is called before the first frame update
 
-    private void Start()
-    {
-        ActorManager.OnActorChanged += PlayBellClick;
-    }
 
     public void PlayButtonClick()
     {
@@ -52,7 +49,7 @@ public class SFXManager : MonoBehaviour
     {
         promptSound.Play();
     }
-    public void PlayBellClick(AudioSource _myClip)
+    public void PlayBellClick()
     {
         bellSound.Play();
     }
