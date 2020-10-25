@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnReplayStarts += StartReplay;
         TextSnippetController.OnActorResponse += SetJulietText;
         TextSnippetController.OnMoodIncrease += FillMoodbar;
-        TextSnippetController.OnSplittedTextOccured += ActorTextSplit;
+        TextSnippetController.OnSplittedTextOccured += JulietTextSplit;
+        TextSnippetController.OnSplittedTextOccuredRomeo += RomeoTextSplit;
     }
 
     private void OnDisable()
@@ -36,11 +37,16 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnReplayStarts -= StartReplay;
         TextSnippetController.OnActorResponse -= SetJulietText;
         TextSnippetController.OnMoodIncrease -= FillMoodbar;
-        TextSnippetController.OnSplittedTextOccured -= ActorTextSplit;
+        TextSnippetController.OnSplittedTextOccured -= JulietTextSplit;
+        TextSnippetController.OnSplittedTextOccuredRomeo -= RomeoTextSplit;
     }
-    private void ActorTextSplit(string _text)
+    private void JulietTextSplit(string _text)
     {
         SetJulietText(_text);
+    }
+    private void RomeoTextSplit(string _text)
+    {
+        SetRomeoText(_text);
     }
 
     private void StartReplay()
@@ -89,6 +95,15 @@ public class UIManager : MonoBehaviour
             romeoPnl.gameObject.SetActive(false);
             actorPnl.gameObject.SetActive(true);
             actorText.SetText(_text);
+        }
+    }
+    private void SetRomeoText(string _text)
+    {
+        if (isReplay)
+        {
+            actorPnl.gameObject.SetActive(false);
+            romeoPnl.gameObject.SetActive(true);
+            romeoText.SetText(_text);
         }
     }
     private void FillMoodbar(float _fill)

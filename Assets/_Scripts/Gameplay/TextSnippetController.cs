@@ -41,6 +41,7 @@ public class TextSnippetController : MonoBehaviour
 
     public static event PassingJulietResponse_EventType OnActorResponse;
     public static event PassingString_EventType OnSplittedTextOccured;
+    public static event PassingString_EventType OnSplittedTextOccuredRomeo;
 
 
 
@@ -119,9 +120,34 @@ public class TextSnippetController : MonoBehaviour
     {
         string text = rhyme[roundCount].RomeoText.responsePart;
         Debug.Log(text);
-        OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
+        if (isPlayback)
+        {
+            if (SplitText(text).Count > 1)
+            {
+                StartCoroutine(RomeoSplittedText(SplitText(text)));
+            }
+            else
+            {
+                OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
+            }
+        }
+        else
+        {
+            OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
+        }
+        
         //TODO: spawn snippets on romeo animation event
         StartCoroutine(TalkingDelay(false));
+    }
+
+    IEnumerator RomeoSplittedText(List<string> _text)
+    {
+        for(int i = 0; i< _text.Count; i++)
+        {
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip? rhyme[roundCount].RomeoText.myClip.length/_text.Count:4f/_text.Count);
+            OnSplittedTextOccuredRomeo(_text[i]);
+            yield return null;
+        }
     }
 
     public string ReturnSmileyStringByEmotion(Smiley _emotion)
@@ -200,9 +226,12 @@ public class TextSnippetController : MonoBehaviour
     }
     private IEnumerator TalkingDelay(bool isRomeoDelay)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? rhyme[roundCount].RomeoText.myClip.length : 4f);
         if (isRomeoDelay)
+        {
             RomeoText();
+
+        }
         else
         {
             if (!isPlayback)
