@@ -33,7 +33,8 @@ public class HealthLightHandler : MonoBehaviour
     #endregion
 
     int damage = 0;
-
+    public float multiplier = 1f;
+    public float targetIntensity = 2f;
     Light[] healthLights;
     Color startColor;
 
@@ -55,6 +56,24 @@ public class HealthLightHandler : MonoBehaviour
     //    if (Input.GetKeyDown(KeyCode.Space)) TakeDamage();
     //}
 
+    private IEnumerator Glow(Light _targetLight)
+    {
+        float temp = _targetLight.intensity;
+        Debug.Log(temp);
+        while (_targetLight.intensity < targetIntensity)
+        {
+            _targetLight.intensity += (Time.deltaTime * multiplier);
+            yield return null;
+        }
+        while (_targetLight.intensity > temp)
+        {
+            _targetLight.intensity -= (Time.deltaTime * multiplier);
+            yield return null;
+        }
+        _targetLight.intensity = temp;
+        yield return null;
+    }
+
     public void ResetDamage()
     {
         damage = 0;
@@ -70,6 +89,7 @@ public class HealthLightHandler : MonoBehaviour
         {
 
             healthLights[damage].color = Color.red;
+            StartCoroutine(Glow(healthLights[damage]));
             damage++;
 
             if (damage == 3) ResetDamage();
