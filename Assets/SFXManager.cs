@@ -36,8 +36,10 @@ public class SFXManager : MonoBehaviour
     [SerializeField] AudioSource promptSound;
     [SerializeField] AudioSource bellSound;
     [SerializeField] AudioSource footstepSound;
+    [SerializeField] AudioSource wrongAnswerSound;
 
     // Start is called before the first frame update
+
 
     public void PlayButtonClick()
     {
