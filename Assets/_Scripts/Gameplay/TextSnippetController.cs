@@ -26,7 +26,7 @@ public class TextSnippetController : MonoBehaviour
     public delegate void PassingFloat_EventType(float _float);
     public delegate void PassingRomeoAnswer_EventType(AnimationAnswerWrapper romeoanswer);
     public delegate void PassingAnimationTag_EventType(AnimationTag emotion);
-    public delegate void PassingAudioClip_EventType(AudioClip clip);
+    public delegate void PassingJulietResponse_EventType(EmotionAnswerWrapper wrapper);
 
     public static event PassingRomeoAnswer_EventType OnRomeoAnimation;
     public static event PassingFloat_EventType OnMoodIncrease;
@@ -34,7 +34,7 @@ public class TextSnippetController : MonoBehaviour
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
 
-    public static event PassingAudioClip_EventType OnActorResponse;
+    public static event PassingJulietResponse_EventType OnActorResponse;
 
 
 
@@ -156,7 +156,7 @@ public class TextSnippetController : MonoBehaviour
     public void RoundEvaluation(bool _correctAnswer, EmotionAnswerWrapper _smileyanswerwrapper)
     {
         OnResponseEmotion?.Invoke(_smileyanswerwrapper.animation);
-        OnActorResponse?.Invoke(_smileyanswerwrapper.myClip);
+        OnActorResponse?.Invoke(_smileyanswerwrapper);
 
         if (_correctAnswer)
         {
@@ -217,17 +217,20 @@ public class TextSnippetController : MonoBehaviour
     {
         roundCount = 0;
         RomeoText();
+        roundCount++;
+
         for (int i = 0; i < chosenText.Count; i++)
         {
             if (wrongAnswerIDs.Contains(i))
-            {
                 OnActorSwap?.Invoke();
-            }
-            yield return new WaitForSeconds(2f);
+
+            yield return new WaitForSeconds(rhyme[i].RomeoText.myClip ? chosenText[i].myClip.length : 4f);
             Debug.Log(chosenText[i].responsePart);
             OnResponseEmotion(chosenText[i].animation);
-            yield return new WaitForSeconds(3f);
+            OnActorResponse?.Invoke(chosenText[i]);
+            yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
             RomeoText();
+            roundCount++;
             yield return null;
         }
         yield return null;
