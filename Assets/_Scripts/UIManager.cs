@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Transform actorPnl;
     public Transform bckstgRomeoPnl;
 
+    public Transform creditsPnl;
+
     private TextMeshProUGUI romeoText;
     private TextMeshProUGUI actorText;
 
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnSplittedTextOccured += JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo += RomeoTextSplit;
         TextSnippetController.OnRomeoSkips += RomeoSkips;
+        TextSnippetController.OnPlayBackEnd += Credits;
     }
 
     private void OnDisable()
@@ -42,6 +45,7 @@ public class UIManager : MonoBehaviour
         TextSnippetController.OnSplittedTextOccured -= JulietTextSplit;
         TextSnippetController.OnSplittedTextOccuredRomeo -= RomeoTextSplit;
         TextSnippetController.OnRomeoSkips -= RomeoSkips;
+        TextSnippetController.OnPlayBackEnd -= Credits;
     }
 
     private void RomeoSkips()
@@ -146,6 +150,11 @@ public class UIManager : MonoBehaviour
     {
         cam1.enabled = !cam1.enabled;
         cam2.enabled = !cam2.enabled;
+    }
+
+    private void Credits()
+    {
+        creditsPnl.gameObject.SetActive(true);
     }
 
 }

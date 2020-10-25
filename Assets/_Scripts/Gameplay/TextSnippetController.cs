@@ -39,11 +39,13 @@ public class TextSnippetController : MonoBehaviour
     public static event PassingAnimationTag_EventType OnResponseEmotion;
     public static event SendMessage_EventType OnReplayStarts;
     public static event SendMessage_EventType OnRomeoSkips;
+    public static event SendMessage_EventType OnPlayBackEnd;
 
     public static event PassingJulietResponse_EventType OnActorResponse;
     public static event PassingString_EventType OnSplittedTextOccured;
     public static event PassingString_EventType OnSplittedTextOccuredRomeo;
 
+    private Coroutine RomeoSplits;
 
 
     void Start()
@@ -126,7 +128,7 @@ public class TextSnippetController : MonoBehaviour
             if (SplitText(text).Count > 1)
             {
                 OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
-                StartCoroutine(RomeoSplittedText(SplitText(text)));
+                RomeoSplits = StartCoroutine(RomeoSplittedText(SplitText(text)));
             }
             else
             {
@@ -136,7 +138,7 @@ public class TextSnippetController : MonoBehaviour
         else
         {
             OnRomeoAnimation?.Invoke(rhyme[roundCount].RomeoText);
-            StartCoroutine(RomeoSplittedText(SplitText(text)));
+            RomeoSplits = StartCoroutine(RomeoSplittedText(SplitText(text)));
         }
 
         //TODO: spawn snippets on romeo animation event
@@ -266,12 +268,19 @@ public class TextSnippetController : MonoBehaviour
                 delay -= Time.deltaTime;
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    skipped = true;
                     OnRomeoSkips?.Invoke();
+                    if (RomeoSplits != null)
+                        StopCoroutine(RomeoSplits);
+                    skipped = true;
                 }
 
                 yield return null;
             }
+            if (RomeoSplits != null)
+                StopCoroutine(RomeoSplits);
+
+            OnRomeoSkips?.Invoke();
+
             if (!isPlayback)
                 SpawnResponseBttns(roundCount);
 
@@ -318,7 +327,12 @@ public class TextSnippetController : MonoBehaviour
             }
             //yield return new WaitForSeconds(chosenText[i].myClip ? chosenText[i].myClip.length : 4f);
             RomeoText();
-            roundCount++;
+            if (roundCount < rhyme.Count)
+                roundCount++;
+            else
+            {
+                OnPlayBackEnd?.Invoke();
+            }
             yield return null;
         }
         yield return null;
