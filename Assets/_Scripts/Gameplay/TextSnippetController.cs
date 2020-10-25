@@ -160,7 +160,7 @@ public class TextSnippetController : MonoBehaviour
         for (int i = 0; i < _text.Count; i++)
         {
             OnSplittedTextOccuredRomeo(_text[i]);
-            yield return new WaitForSeconds(7f);/*rhyme[roundCount].RomeoText.myClip ? (rhyme[roundCount].RomeoText.myClip.length / (float)_text.Count) : 4f /(float) _text.Count*/
+            yield return new WaitForSeconds(rhyme[roundCount].RomeoText.myClip ? (rhyme[roundCount].RomeoText.myClip.length / (float)_text.Count) : 12f / (float)_text.Count);
         }
         yield return null;
     }
